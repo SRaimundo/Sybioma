@@ -57,7 +57,7 @@ class SybiomaDB:
                                 i+=1
 
     
-    def percorreShapesApp(self,diretorio):
+    def percorreShapesAreaImovel(self,diretorio):
         lista_dir_atual = os.listdir(diretorio)
 
         for diretorios in lista_dir_atual:
@@ -70,7 +70,7 @@ class SybiomaDB:
                             quant = table.shape[0]
                             i = 0
                             while i<quant :
-                                self.insertAreaImovel(table.COD_IMOVEL[i],table.NUM_AREA[i], table.COD_ESTADO[i], table.NOM_MUNICI[i], table.NUM_MODULO[i], table.TIPO_IMOVE[i], table.SITUACAO[i], table.CONDICAO_I[i], table.geometry[i])
+                                self.insertAreaImovel(shapes.split("E_")[1],table.COD_IMOVEL[i],table.NUM_AREA[i], table.COD_ESTADO[i], table.NOM_MUNICI[i], table.NUM_MODULO[i], table.TIPO_IMOVE[i], table.SITUACAO[i], table.CONDICAO_I[i], table.geometry[i])
                                 i+=1
 
 
