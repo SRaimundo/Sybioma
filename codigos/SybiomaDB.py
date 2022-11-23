@@ -31,6 +31,7 @@ class SybiomaDB:
         self._cursor.execute(comando)
     
     def insertApp(self, cod_cidade, IDF, NOM_TEMA, NUM_AREA, geometry):
+        NOM_TEMA = NOM_TEMA.replace("\'","")
         with open("commandInsertApp.txt","r") as arquivo:
             comando = arquivo.read().format(cod_cidade, IDF, NOM_TEMA, NUM_AREA, geometry)
         self._cursor.execute(comando)
@@ -42,39 +43,42 @@ class SybiomaDB:
     
     def percorreShapesApp(self,diretorio):
         lista_dir_atual = os.listdir(diretorio)
-
-        for diretorios in lista_dir_atual:
-            if os.path.isdir(diretorios):
-                lista_shapes = os.listdir(diretorios)
-                for shapes in lista_shapes:
-                    if os.path.isdir(f'{diretorios}/{shapes}'):
-                        if f'{arq}.dbf' in os.listdir(f'{diretorios}/{shapes}'):
-                            table = gpd.read_file(f'{diretorios}/{shapes}/APP.shp' , encoding='utf-8',char_decode_errors='ignore')
-                            quant = table.shape[0]
-                            i = 0
-                            while i<quant :
-                                self.insertApp(shapes.split("E_")[1], table.IDF[i], table.NOM_TEMA[i], table.NUM_AREA[i], table.geometry[i])
-                                i+=1
+        
+        for shapes in lista_dir_atual:
+            if f'APP.shp' in os.listdir(f'{diretorio}/{shapes}'):
+                table = gpd.read_file(f'{diretorio}/{shapes}/APP.shp' , encoding='utf-8',char_decode_errors='ignore')
+                quant = table.shape[0]
+                i = 0
+                while i<quant :
+                    self.insertApp(shapes.split("E_")[1], table.IDF[i], str(table.NOM_TEMA[i]), table.NUM_AREA[i], table.geometry[i])
+                    i+=1
 
     
     def percorreShapesAreaImovel(self,diretorio):
         lista_dir_atual = os.listdir(diretorio)
 
-        for diretorios in lista_dir_atual:
-            if os.path.isdir(diretorios):
-                lista_shapes = os.listdir(diretorios)
-                for shapes in lista_shapes:
-                    if os.path.isdir(f'{diretorios}/{shapes}'):
-                        if f'{arq}.dbf' in os.listdir(f'{diretorios}/{shapes}'):
-                            table = gpd.read_file(f'{diretorios}/{shapes}/AREA_IMOVEL.shp' , encoding='utf-8',char_decode_errors='ignore')
-                            quant = table.shape[0]
-                            i = 0
-                            while i<quant :
-                                self.insertAreaImovel(shapes.split("E_")[1],table.COD_IMOVEL[i],table.NUM_AREA[i], table.COD_ESTADO[i], table.NOM_MUNICI[i], table.NUM_MODULO[i], table.TIPO_IMOVE[i], table.SITUACAO[i], table.CONDICAO_I[i], table.geometry[i])
-                                i+=1
+        for shapes in lista_dir_atual:
+            if os.path.isdir(f'{diretorios}/{shapes}'):
+                if f'AREA_IMOVEL.shp' in os.listdir(f'{diretorio}/{shapes}'):
+                    table = gpd.read_file(f'{diretorio}/{shapes}/AREA_IMOVEL.shp' , encoding='utf-8',char_decode_errors='ignore')
+                    quant = table.shape[0]
+                    i = 0
+                    while i<quant :
+                        self.insertAreaImovel(shapes.split("E_")[1],table.COD_IMOVEL[i],table.NUM_AREA[i], table.COD_ESTADO[i], table.NOM_MUNICI[i], table.NUM_MODULO[i], table.TIPO_IMOVE[i], table.SITUACAO[i], table.CONDICAO_I[i], table.geometry[i])
+                        i+=1
 
 
 
 
-teste = SybiomaDB('localhost','sybioma', 'postgres','986082Sr')
-teste.criarTabelaAPP()
+teste = SybiomaDB('localhost','teste', 'samuel','986082Sr')
+print("Conectou")
+
+# teste.criarTabelaAPP()
+# print("Criou tabela app")
+
+# teste.criarTabelaAreaImovel()
+# print("Criou tabela area imovel")
+
+teste.percorreShapesApp("/home/alunos/Desktop/sybioma/testeCodigos/samuel")
+print("Shapes inseridos")
+# teste.percorreShapesAreaImovel("/home/alunos/Desktop/sybioma/testeCodigos/samuel")

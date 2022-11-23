@@ -1,0 +1,11 @@
+SET CLIENT_ENCODING TO UTF8;
+SET STANDARD_CONFORMING_STRINGS TO ON;
+BEGIN;
+CREATE TABLE "app" (gid serial, 
+"cod_cidade" integer default -1,
+"idf" float8,
+"nom_tema" varchar(100),
+"num_area" numeric);
+ALTER TABLE "app" ADD PRIMARY KEY (gid);
+SELECT AddGeometryColumn('','app','geom','0','MULTIPOLYGON',2);
+COMMIT;
