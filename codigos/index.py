@@ -32,7 +32,7 @@ def show_frame(frame):
 show_frame(LoginPage)
 
 
-# ========== DATABASE informatios ============
+# ========== DATABASE  ============
 Conta = StringVar()
 DataBaseName = StringVar()
 Password = StringVar()
@@ -44,7 +44,7 @@ def connection():
     conta = user_name.get()
     senha = str(password_entry.get())
     try:
-        banco.setConnection('localhost','teste',conta, senha)
+        banco.setConnection('localhost',NomeBanco,conta, senha)
         show_frame(CommandPage)
     except:
         messagebox.showwarning('Error', 'Senha ou login invalidos')
@@ -54,13 +54,13 @@ def CriaApp():
     banco.criarTabelaAPP()
 
 def CriaAreaImovel():
-    banco.criaAreaImovel()
+    banco.criarTabelaAreaImovel
 
 def InsereApp():
     banco.percorreShapesApp()
 
 def InsereAreaImovel():
-    banco.percorreShapesAreaImovel()
+    banco.percorreShapesAreaImovel
 
 # =====================================================================================================================
 # =====================================================================================================================
