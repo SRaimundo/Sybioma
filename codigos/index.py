@@ -9,6 +9,7 @@ window = Tk()
 window.rowconfigure(0, weight=1)
 window.columnconfigure(0, weight=1)
 window.attributes('-zoomed', True)
+# window.configure(background='#3F79F2')
 # window.state('zoomed')
 window.resizable(0, 0)
 window.title('Sybioma System')
@@ -70,9 +71,9 @@ def InsereAreaImovel():
 
 # COMANDOS
 
-
-design_frame1 = Listbox(CommandPage, bg='#0c71b9', width=115, height=50, highlightthickness=0, borderwidth=0)
-design_frame1.place(x=0, y=0)
+#fundo da paginda de Comandos
+design_frame1 = Listbox(CommandPage, bg='#0c71b9', highlightthickness=0, borderwidth=0)
+design_frame1.place(relx=0, rely=0,relwidth = 1, relheight = 1)
 
 design_frame2 = Listbox(CommandPage, bg='#1e85d0', width=115, height=50, highlightthickness=0, borderwidth=0)
 design_frame2.place(x=676, y=0)
@@ -276,9 +277,12 @@ side_image_label.place(x=50, y=10)
 # =====================================================================================================================
 # =====================================================================================================================
 
+# fundo_LoginPage = Listbox(LoginPage,bg='#0c71b9')
+# fundo_LoginPage.place(relx=0, rely=0,relwidth = 1, relheight = 1)
 
-design_frame5 = Listbox(LoginPage, bg='#0c71b9', width=115, height=50, highlightthickness=0, borderwidth=0)
-design_frame5.place(x=0, y=0)
+#fundo da pagina de login
+design_frame5 = Listbox(LoginPage, bg='#0c71b9', highlightthickness=0, borderwidth=0)
+design_frame5.place(relx=0, rely=0,relwidth = 1, relheight = 1)
 
 design_frame6 = Listbox(LoginPage, bg='#1e85d0', width=115, height=50, highlightthickness=0, borderwidth=0)
 design_frame6.place(x=676, y=0)

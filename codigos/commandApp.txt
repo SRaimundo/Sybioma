@@ -4,7 +4,7 @@ BEGIN;
 CREATE TABLE "app" (gid serial, 
 "cod_cidade" integer default -1,
 "idf" float8,
-"nom_tema" varchar(100),
+"nom_tema" text,
 "num_area" numeric);
 ALTER TABLE "app" ADD PRIMARY KEY (gid);
 SELECT AddGeometryColumn('','app','geom','0','MULTIPOLYGON',2);
