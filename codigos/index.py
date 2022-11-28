@@ -52,16 +52,32 @@ def connection():
         return
 
 def CriaApp():
-    banco.criarTabelaAPP()
+    try:
+        banco.criarTabelaAPP()
+    except:
+        messagebox.showwarning('Error', 'Erro ao criar Tabela App')
+        return
 
 def CriaAreaImovel():
-    banco.criarTabelaAreaImovel
+    try:
+        banco.criarTabelaAreaImovel
+    except:
+        messagebox.showwarning('Error', 'Erro ao criar Tabela Area Imovel')
+        return
 
 def InsereApp():
-    banco.percorreShapesApp()
+    try:
+        banco.percorreShapesApp()
+     except:
+        messagebox.showwarning('Error', 'Erro ao inserir dados na tabela App')
+        return
 
 def InsereAreaImovel():
-    banco.percorreShapesAreaImovel
+    try:
+        banco.percorreShapesAreaImovel()
+     except:
+        messagebox.showwarning('Error', 'Erro ao inserir dados na tabela Area Imovel')
+        return
 
 # =====================================================================================================================
 # =====================================================================================================================
