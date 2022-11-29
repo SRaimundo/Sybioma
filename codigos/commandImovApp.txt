@@ -1,4 +1,4 @@
-CREATE TABLE public."IMOV_APP"
+CREATE TABLE public."imovel_app"
 (
     idi integer NOT NULL,
     idapp integer NOT NULL,

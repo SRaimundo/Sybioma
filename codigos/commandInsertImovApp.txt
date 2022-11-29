@@ -1,4 +1,1 @@
-insert into public."IMOV_APP" (idi,idapp)
-select i.id, a.id
-from public."area_imovel" i, (select * from public."app" app where ST_Isvalid(app.geom)) a
-where ST_Intersects(i.geom, a.geom);
+insert into imovel_app (select area_imovel.gid,app_recompor.gid from area_imovel, app_recompor where st_intersects(area_imovel.geom, app_recompor.geom))
