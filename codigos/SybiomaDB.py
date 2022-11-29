@@ -59,7 +59,7 @@ class SybiomaDB:
     def percorreShapesApp(self):            
         
         if self.criarPrepareApp == True:
-                self._cursor.execute("prepare planoInsertApp as INSERT INTO APP(cod_cidade, idf, nom_tema, num_area, geom) VALUES ($1,$2,$3,$4,$5)")
+                self._cursor.execute("prepare planoInsertApp as INSERT INTO APP(cod_cidade, idf, nom_tema, num_area, geom) VALUES ($1,$2,$3,$4,st_makevalid($5))")
                 self.criarPrepareApp = False
         
         diretorio = filedialog.askdirectory()
@@ -85,7 +85,7 @@ class SybiomaDB:
     def percorreShapesAreaImovel(self):
 
         if self.criarPrepareAreaImovel:
-            self._cursor.execute("prepare planoInsertAreaImovel as INSERT INTO area_imovel(cod_cidade,cod_imovel, num_area, cod_estado, nom_munici, num_modulo, tipo_imove, situacao, condicao_i, geom)VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)")
+            self._cursor.execute("prepare planoInsertAreaImovel as INSERT INTO area_imovel(cod_cidade,cod_imovel, num_area, cod_estado, nom_munici, num_modulo, tipo_imove, situacao, condicao_i, geom)VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,st_makevalid($10))")
             self.criarPrepareAreaImovel = False
         
         diretorio = filedialog.askdirectory()
