@@ -51,7 +51,7 @@ class SybiomaDB:
         self._cursor.execute(comando)
 
     def populaImovApp(self):
-        with open("commandInsertAreaImovel.txt","r") as arquivo:
+        with open("commandInsertImovApp.txt","r") as arquivo:
             comando = arquivo.read()
         self._cursor.execute(comando)
  

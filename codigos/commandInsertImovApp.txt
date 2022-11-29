@@ -1,4 +1,4 @@
 insert into public."IMOV_APP" (idi,idapp)
 select i.id, a.id
-from public."AREA_IMOVEL" i, (select * from public."APP" app where ST_Isvalid(app.geom)) a
+from public."area_imovel" i, (select * from public."app" app where ST_Isvalid(app.geom)) a
 where ST_Intersects(i.geom, a.geom);
