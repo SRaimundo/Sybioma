@@ -85,14 +85,14 @@ class SybiomaDB:
     def percorreShapesAreaImovel(self):
 
         if self.criarPrepareAreaImovel:
-            self._cursor.execute("prepare planoInsertAreaImovel as INSERT INTO area_imovel(cod_cidade,cod_imovel, num_area, cod_estado, num_munici, num_modulo, tipo_imove, situacao, condicao_i, geom)VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)")
+            self._cursor.execute("prepare planoInsertAreaImovel as INSERT INTO area_imovel(cod_cidade,cod_imovel, num_area, cod_estado, nom_munici, num_modulo, tipo_imove, situacao, condicao_i, geom)VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)")
             self.criarPrepareAreaImovel = False
         
         diretorio = filedialog.askdirectory()
         lista_dir_atual = os.listdir(diretorio)
 
         for shapes in lista_dir_atual:
-            if os.path.isdir(f'{diretorios}/{shapes}'):
+            if os.path.isdir(f'{diretorio}/{shapes}'):
                 if f'AREA_IMOVEL.shp' in os.listdir(f'{diretorio}/{shapes}'):
                     table = gpd.read_file(f'{diretorio}/{shapes}/AREA_IMOVEL.shp' , encoding='utf-8',char_decode_errors='ignore')
                     quant = table.shape[0]
