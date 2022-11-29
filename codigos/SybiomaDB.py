@@ -28,11 +28,13 @@ class SybiomaDB:
     def __del__(self):
         self._cursor.close()
         self._connection.close()
+        
     
     def criarTabelaAPP(self):
         with open("commandApp.txt","r") as arquivo:
             comando = arquivo.read()
         self._cursor.execute(comando)
+        
     
     
     def criarTabelaAreaImovel(self):

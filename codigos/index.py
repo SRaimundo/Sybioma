@@ -103,14 +103,14 @@ def CriaAreaImovel():
         return
 
 def InsereApp():
-    # try:
-    #     show_frame(LoadingPage)
-    banco.percorreShapesApp()
-    #     show_frame(CommandPage)
-    # except:
-    #     messagebox.showwarning('Error', 'Erro ao inserir dados na tabela App')
-    #     show_frame(CommandPage)
-    #     return
+    try:
+        show_frame(LoadingPage)
+        banco.percorreShapesApp()
+        show_frame(CommandPage)
+    except:
+        messagebox.showwarning('Error', 'Erro ao inserir dados na tabela App')
+        show_frame(CommandPage)
+        return
 
 def InsereAreaImovel():
     try:
