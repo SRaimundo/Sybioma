@@ -24,8 +24,6 @@ class SybiomaDB:
         self.criarPrepareAreaImovel = True
 
         
-
-
     
     def __del__(self):
         self._cursor.close()
@@ -42,6 +40,21 @@ class SybiomaDB:
             comando = arquivo.read()
         self._cursor.execute(comando)
     
+    def criarTabelaAPPRecompor(self):
+        with open("commandAppRecompor.txt","r") as arquivo:
+            comando = arquivo.read()
+        self._cursor.execute(comando)
+    
+    def criarTabelaImovApp(self):
+        with open("commandImovApp.txt","r") as arquivo:
+            comando = arquivo.read()
+        self._cursor.execute(comando)
+
+    def populaImovApp(self):
+        with open("commandInsertAreaImovel.txt","r") as arquivo:
+            comando = arquivo.read()
+        self._cursor.execute(comando)
+ 
     
     def percorreShapesApp(self):            
         
@@ -94,6 +107,36 @@ class SybiomaDB:
                         if i%200 ==0:
                             self._connection.commit()
                     self._connection.commit()
+    
+    def corrigirTextoApp(self):
+        self._cursor.execute("update app set nom_tema=lower(convert_from(convert(SUBSTRING(nom_tema,0,99)::bytea, 'UTF8', 'LATIN1'), 'UTF8'));Commit;")
+    
+    def corrigirTextoAppRecompor(self):
+        self._cursor.execute("update app_recompor set nom_tema=lower(convert_from(convert(SUBSTRING(nom_tema,0,99)::bytea, 'UTF8', 'LATIN1'), 'UTF8'));Commit;")
+    
+    def corrigirTextoAreaImovelCond(self):
+        self._cursor.execute("update area_imovel set condicao_i=lower(convert_from(convert(condicao_i::bytea, 'UTF8', 'LATIN1'), 'UTF8'));Commit;")
+    
+    def corrigirTextoAreaImovelNom(self):
+        self._cursor.execute("update area_imovel set nom_munici=lower(convert_from(convert(nom_munici::bytea, 'UTF8', 'LATIN1'), 'UTF8'));Commit;")
+    
+    def criaGeoIndiceRecompor(self):
+        with open("CommandAppRecomporGeoIndex.txt","r") as arquivo:
+            comando = arquivo.read()
+        self._cursor.execute(comando)
+    
+    def criaGidIndiceRecompor(self):
+        with open("CommandAppRecomporGidIndex.txt","r") as arquivo:
+            comando = arquivo.read()
+        self._cursor.execute(comando)
+    
+    def criaCodImovelIndiceRecompor(self):
+        with open("CommandAppRecomporCodImovelIndex.txt","r") as arquivo:
+            comando = arquivo.read()
+        self._cursor.execute(comando)
+    
+    
+
 
 
 

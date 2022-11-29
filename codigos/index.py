@@ -9,7 +9,6 @@ window = Tk()
 window.rowconfigure(0, weight=1)
 window.columnconfigure(0, weight=1)
 window.attributes('-zoomed', True)
-# window.configure(background='#3F79F2')
 # window.state('zoomed')
 window.resizable(0, 0)
 window.title('Sybioma System')
@@ -21,8 +20,9 @@ window.iconphoto(True, icon)
 
 CommandPage = Frame(window)
 LoginPage = Frame(window)
+LoadingPage = Frame(window)
 
-for frame in (CommandPage, LoginPage):
+for frame in (CommandPage, LoginPage, LoadingPage):
     frame.grid(row=0, column=0, sticky='nsew')
 
 
@@ -53,31 +53,148 @@ def connection():
 
 def CriaApp():
     try:
+        show_frame(LoadingPage)
         banco.criarTabelaAPP()
+        show_frame(CommandPage)
     except:
         messagebox.showwarning('Error', 'Erro ao criar Tabela App')
+        show_frame(CommandPage)
         return
+
+def CriarAppRecompor():
+    try:
+        show_frame(LoadingPage)
+        banco.criarTabelaAPPRecompor()
+        show_frame(CommandPage)
+    except:
+        messagebox.showwarning('Error', 'Erro ao criar Tabela App Recompor')
+        show_frame(CommandPage)
+        return
+
+def CriarImovApp():
+    try:
+        show_frame(LoadingPage)
+        banco.criarTabelaImovApp()
+        show_frame(CommandPage)
+    except:
+        messagebox.showwarning('Error', 'Erro ao criar Tabela Imovel App')
+        show_frame(CommandPage)
+        return
+
+def populaImovApp():
+    try:
+        show_frame(LoadingPage)
+        banco.populaImovApp()
+        show_frame(CommandPage)
+    except:
+        messagebox.showwarning('Error', 'Erro ao popular tabela Imovel App')
+        show_frame(CommandPage)
+        return
+
 
 def CriaAreaImovel():
     try:
-        banco.criarTabelaAreaImovel
+        show_frame(LoadingPage)
+        banco.criarTabelaAreaImovel()
+        show_frame(CommandPage)
     except:
         messagebox.showwarning('Error', 'Erro ao criar Tabela Area Imovel')
+        show_frame(CommandPage)
         return
 
 def InsereApp():
     try:
+        show_frame(LoadingPage)
         banco.percorreShapesApp()
-     except:
+        show_frame(CommandPage)
+    except:
         messagebox.showwarning('Error', 'Erro ao inserir dados na tabela App')
+        show_frame(CommandPage)
         return
 
 def InsereAreaImovel():
     try:
+        show_frame(LoadingPage)
         banco.percorreShapesAreaImovel()
-     except:
+        show_frame(CommandPage)
+    except:
         messagebox.showwarning('Error', 'Erro ao inserir dados na tabela Area Imovel')
+        show_frame(CommandPage)
         return
+
+def corrigirTextoApp():
+    try:
+        show_frame(LoadingPage)
+        banco.corrigirTextoApp()
+        show_frame(CommandPage)
+    except:
+        messagebox.showwarning('Error', 'Erro ao corrigir formatacao da App')
+        show_frame(CommandPage)
+        return
+
+def corrigirTextoAppRecompor():
+    try:
+        show_frame(LoadingPage)
+        banco.corrigirTextoAppRecompor()
+        show_frame(CommandPage)
+    except:
+        messagebox.showwarning('Error', 'Erro ao corrigir formatacao da App Recompor')
+        show_frame(CommandPage)
+        return
+
+def corrigirTextoAreaImovelCond():
+    try:
+        show_frame(LoadingPage)
+        banco.corrigirTextoAreaImovelCond()
+        show_frame(CommandPage)
+    except:
+        messagebox.showwarning('Error', 'Erro ao corrigir formatacao da Condicao em Area Imovel')
+        show_frame(CommandPage)
+        return
+
+def corrigirTextoAreaImovelNom():
+    try:
+        show_frame(LoadingPage)
+        banco.corrigirTextoAreaImovelNom()
+        show_frame(CommandPage)
+    except:
+        messagebox.showwarning('Error', 'Erro ao corrigir formatacao de Nom_Tema em Area Imovel')
+        show_frame(CommandPage)
+        return
+
+def criaGeoIndiceRecompor():
+    try:
+        show_frame(LoadingPage)
+        banco.criaGeoIndiceRecompor()
+        show_frame(CommandPage)
+    except:
+        messagebox.showwarning('Error', 'Erro ao criar indice Geometrico em App Recompor')
+        show_frame(CommandPage)
+        return
+
+def criaGidIndiceRecompor():
+    try:
+        show_frame(LoadingPage)
+        banco.criaGidIndiceRecompor()
+        show_frame(CommandPage)
+    except:
+        messagebox.showwarning('Error', 'Erro ao criar indice do GID em App Recompor')
+        show_frame(CommandPage)
+        return
+
+def criaCodImovelIndiceRecompor():
+    try:
+        show_frame(LoadingPage)
+        banco.criaCodImovelIndiceRecompor()
+        show_frame(CommandPage)
+    except:
+        messagebox.showwarning('Error', 'Erro ao criar indice do codigo imovel em App Recompor')
+        show_frame(CommandPage)
+        return
+
+
+
+ 
 
 # =====================================================================================================================
 # =====================================================================================================================
@@ -100,166 +217,108 @@ design_frame3.place(x=75, y=106)
 design_frame4 = Listbox(CommandPage, bg='#f8f8f8', width=100, height=33, highlightthickness=0, borderwidth=0)
 design_frame4.place(x=676, y=106)
 
-# ====== Email ====================
-# user_name = Entry(design_frame4, fg="#a7a7a7", font=("yu gothic ui semibold", 12), highlightthickness=2,
-#                     textvariable=Email)
-# user_name.place(x=134, y=170, width=256, height=34)
-# user_name.config(highlightbackground="black", highlightcolor="black")
-# email_label = Label(design_frame4, text='• Email account', fg="#89898b", bg='#f8f8f8', font=("yu gothic ui", 11, 'bold'))
-# email_label.place(x=130, y=140)
-
-# ==== Password ==================
-# password_entry1 = Entry(design_frame4, fg="#a7a7a7", font=("yu gothic ui semibold", 12), show='•', highlightthickness=2,
-#                         textvariable=Password)
-# password_entry1.place(x=134, y=250, width=256, height=34)
-# password_entry1.config(highlightbackground="black", highlightcolor="black")
-# password_label = Label(design_frame4, text='• Password', fg="#89898b", bg='#f8f8f8', font=("yu gothic ui", 11, 'bold'))
-# password_label.place(x=130, y=220)
-
-
-# function for show and hide password
-# def password_command():
-#     if password_entry1.cget('show') == '•':
-#         password_entry1.config(show='')
-#     else:
-#         password_entry1.config(show='•')
-
-
-# ====== checkbutton ==============
-# checkButton = Checkbutton(design_frame4, bg='#f8f8f8', command=password_command, text='show password')
-# checkButton.place(x=140, y=288)
-
-# ========= Buttons ===============
-# SignUp_button = Button(CommandPage, text='Sign up', font=("yu gothic ui bold", 12), bg='#f8f8f8', fg="#89898b",
-#                        command=lambda: show_frame(LoginPage), borderwidth=0, activebackground='#1b87d2', cursor='hand2')
-# SignUp_button.place(x=1100, y=175)
 
 # ===== Welcome Label ==============
 welcome_label = Label(design_frame4, text='Welcome', font=('Arial', 20, 'bold'), bg='#f8f8f8')
 welcome_label.place(x=130, y=15)
 
-# ======= top Login Button =========
-# login_button = Button(CommandPage, text='Login', font=("yu gothic ui bold", 12), bg='#f8f8f8', fg="#89898b",
-#                       borderwidth=0, activebackground='#1b87d2', cursor='hand2')
-# login_button.place(x=845, y=175)
-
-# login_line = Canvas(CommandPage, width=60, height=5, bg='#1b87d2')
-# login_line.place(x=840, y=203)
 
 # ==== Commands buttons  down button ============
-Command1 = Button(design_frame4, fg='#f8f8f8', text='Criar tabela App', bg='#1b87d2', font=("yu gothic ui bold", 12),
+Command1 = Button(design_frame4, fg='#f8f8f8', text='Criar tabela App', bg='#1b87d2', font=("yu gothic ui bold", 11),
                    cursor='hand2', activebackground='#1b87d2', command=CriaApp)
 Command1.place(x=10, y=120, width=215, height=50)
 
 # Comando 2
-Command2 = Button(design_frame4, fg='#f8f8f8', text='Criar tabela AreaImovel', bg='#1b87d2', font=("yu gothic ui bold", 12),
+Command2 = Button(design_frame4, fg='#f8f8f8', text='Criar tabela AreaImovel', bg='#1b87d2', font=("yu gothic ui bold", 11),
                    cursor='hand2', activebackground='#1b87d2', command=CriaAreaImovel)
 Command2.place(x=235, y=120, width=215, height=50)
 
 # Comando 3
-Command3 = Button(design_frame4, fg='#f8f8f8', text='Inserir shapes App', bg='#1b87d2', font=("yu gothic ui bold", 12),
+Command3 = Button(design_frame4, fg='#f8f8f8', text='Inserir shapes App', bg='#1b87d2', font=("yu gothic ui bold", 11),
                    cursor='hand2', activebackground='#1b87d2', command=InsereApp)
 Command3.place(x=470, y=120, width=215, height=50)
 
 #Comando 4
-
-
-Command4 = Button(design_frame4, fg='#f8f8f8', text='Inserir shapes AreaImovel', bg='#1b87d2', font=("yu gothic ui bold", 12),
+Command4 = Button(design_frame4, fg='#f8f8f8', text='Inserir shapes AreaImovel', bg='#1b87d2', font=("yu gothic ui bold", 11),
                    cursor='hand2', activebackground='#1b87d2', command=InsereAreaImovel)
 Command4.place(x=10, y=190, width=215, height=50)
 
 # Comando 5
-Command5 = Button(design_frame4, fg='#f8f8f8', text='Command5', bg='#1b87d2', font=("yu gothic ui bold", 15),
-                   cursor='hand2', activebackground='#1b87d2', command=lambda: login())
+Command5 = Button(design_frame4, fg='#f8f8f8', text='Criar App Recompor', bg='#1b87d2', font=("yu gothic ui bold", 11),
+                   cursor='hand2', activebackground='#1b87d2', command=CriarAppRecompor)
 Command5.place(x=235, y=190, width=215, height=50)
 
 # Comando 6
-Command6 = Button(design_frame4, fg='#f8f8f8', text='Command6', bg='#1b87d2', font=("yu gothic ui bold", 15),
-                   cursor='hand2', activebackground='#1b87d2', command=lambda: login())
+Command6 = Button(design_frame4, fg='#f8f8f8', text='Criar Geo indice App Recompor', bg='#1b87d2', font=("yu gothic ui bold", 9),
+                   cursor='hand2', activebackground='#1b87d2', command=criaGeoIndiceRecompor)
 Command6.place(x=470, y=190, width=215, height=50)
 
 # Comando 7
 
-Command7 = Button(design_frame4, fg='#f8f8f8', text='Command7', bg='#1b87d2', font=("yu gothic ui bold", 15),
-                   cursor='hand2', activebackground='#1b87d2', command=lambda: login())
+Command7 = Button(design_frame4, fg='#f8f8f8', text='Criar indice gid App Recompor', bg='#1b87d2', font=("yu gothic ui bold", 9),
+                   cursor='hand2', activebackground='#1b87d2', command=criaGidIndiceRecompor)
 Command7.place(x=10, y=260, width=215, height=50)
 
 # Comando 8
-Command8 = Button(design_frame4, fg='#f8f8f8', text='Command8', bg='#1b87d2', font=("yu gothic ui bold", 15),
-                   cursor='hand2', activebackground='#1b87d2', command=lambda: login())
+Command8 = Button(design_frame4, fg='#f8f8f8', text='Criar CodImovel indice Recompor', bg='#1b87d2', font=("yu gothic ui bold", 9),
+                   cursor='hand2', activebackground='#1b87d2', command=criaCodImovelIndiceRecompor)
 Command8.place(x=235, y=260, width=215, height=50)
 
 # Comando 9
-Command9 = Button(design_frame4, fg='#f8f8f8', text='Command9', bg='#1b87d2', font=("yu gothic ui bold", 15),
-                   cursor='hand2', activebackground='#1b87d2', command=lambda: login())
+Command9 = Button(design_frame4, fg='#f8f8f8', text='Corrigir formatacao App', bg='#1b87d2', font=("yu gothic ui bold", 11),
+                   cursor='hand2', activebackground='#1b87d2', command=corrigirTextoApp)
 Command9.place(x=470, y=260, width=215, height=50)
 
 #Comando 10
 
 
-Command10 = Button(design_frame4, fg='#f8f8f8', text='Command10', bg='#1b87d2', font=("yu gothic ui bold", 15),
-                   cursor='hand2', activebackground='#1b87d2', command=lambda: login())
+Command10 = Button(design_frame4, fg='#f8f8f8', text='Corrigir formatacao App Recompor', bg='#1b87d2', font=("yu gothic ui bold", 9),
+                   cursor='hand2', activebackground='#1b87d2', command=corrigirTextoAppRecompor)
 Command10.place(x=10, y=330, width=215, height=50)
 
 # Comando 11
-Command11 = Button(design_frame4, fg='#f8f8f8', text='Command11', bg='#1b87d2', font=("yu gothic ui bold", 15),
-                   cursor='hand2', activebackground='#1b87d2', command=lambda: login())
+Command11 = Button(design_frame4, fg='#f8f8f8', text='Corrigir Condicao Area Imovel', bg='#1b87d2', font=("yu gothic ui bold", 9),
+                   cursor='hand2', activebackground='#1b87d2', command=corrigirTextoAreaImovelCond)
 Command11.place(x=235, y=330, width=215, height=50)
 
 # Comando 12
-Command12 = Button(design_frame4, fg='#f8f8f8', text='Command12', bg='#1b87d2', font=("yu gothic ui bold", 15),
-                   cursor='hand2', activebackground='#1b87d2', command=lambda: login())
+Command12 = Button(design_frame4, fg='#f8f8f8', text='Corrigir NOM_TEMA Area Imovel', bg='#1b87d2', font=("yu gothic ui bold", 9),
+                   cursor='hand2', activebackground='#1b87d2', command=corrigirTextoAreaImovelNom)
 Command12.place(x=470, y=330, width=215, height=50)
 
 # Comando 13
 
-Command13 = Button(design_frame4, fg='#f8f8f8', text='Command13', bg='#1b87d2', font=("yu gothic ui bold", 15),
-                   cursor='hand2', activebackground='#1b87d2', command=lambda: login())
+Command13 = Button(design_frame4, fg='#f8f8f8', text='Criar tabela Imovel App', bg='#1b87d2', font=("yu gothic ui bold", 11),
+                   cursor='hand2', activebackground='#1b87d2', command=CriarImovApp)
 Command13.place(x=10, y=400, width=215, height=50)
 
 # Comando 14
-Command14 = Button(design_frame4, fg='#f8f8f8', text='Command14', bg='#1b87d2', font=("yu gothic ui bold", 15),
-                   cursor='hand2', activebackground='#1b87d2', command=lambda: login())
+Command14 = Button(design_frame4, fg='#f8f8f8', text='Popular Imovel App com os dados', bg='#1b87d2', font=("yu gothic ui bold", 9),
+                   cursor='hand2', activebackground='#1b87d2', command=populaImovApp)
 Command14.place(x=235, y=400, width=215, height=50)
 
-# Comando 15
-Command15 = Button(design_frame4, fg='#f8f8f8', text='Command15', bg='#1b87d2', font=("yu gothic ui bold", 15),
-                   cursor='hand2', activebackground='#1b87d2', command=lambda: login())
-Command15.place(x=470, y=400, width=215, height=50)
+# # Comando 15
+# Command15 = Button(design_frame4, fg='#f8f8f8', text='Command15', bg='#1b87d2', font=("yu gothic ui bold", 15),
+#                    cursor='hand2', activebackground='#1b87d2', command=lambda: login())
+# Command15.place(x=470, y=400, width=215, height=50)
 
-#Comando 16
+# #Comando 16
 
-Command16 = Button(design_frame4, fg='#f8f8f8', text='Command16', bg='#1b87d2', font=("yu gothic ui bold", 15),
-                   cursor='hand2', activebackground='#1b87d2', command=lambda: login())
-Command16.place(x=10, y=470, width=215, height=50)
+# Command16 = Button(design_frame4, fg='#f8f8f8', text='Command16', bg='#1b87d2', font=("yu gothic ui bold", 15),
+#                    cursor='hand2', activebackground='#1b87d2', command=lambda: login())
+# Command16.place(x=10, y=470, width=215, height=50)
 
-# Comando 17
-Command17 = Button(design_frame4, fg='#f8f8f8', text='Command17', bg='#1b87d2', font=("yu gothic ui bold", 15),
-                   cursor='hand2', activebackground='#1b87d2', command=lambda: login())
-Command17.place(x=235, y=470, width=215, height=50)
+# # Comando 17
+# Command17 = Button(design_frame4, fg='#f8f8f8', text='Command17', bg='#1b87d2', font=("yu gothic ui bold", 15),
+#                    cursor='hand2', activebackground='#1b87d2', command=lambda: login())
+# Command17.place(x=235, y=470, width=215, height=50)
 
-# Comando 18
-Command18 = Button(design_frame4, fg='#f8f8f8', text='Command18', bg='#1b87d2', font=("yu gothic ui bold", 15),
-                   cursor='hand2', activebackground='#1b87d2', command=lambda: login())
-Command18.place(x=470, y=470, width=215, height=50)
+# # Comando 18
+# Command18 = Button(design_frame4, fg='#f8f8f8', text='Command18', bg='#1b87d2', font=("yu gothic ui bold", 15),
+#                    cursor='hand2', activebackground='#1b87d2', command=lambda: login())
+# Command18.place(x=470, y=470, width=215, height=50)
 
 
-
-# ======= ICONS =================
-
-# ===== Email icon =========
-# email_icon = Image.open('images/email_icon.png')
-# photo = ImageTk.PhotoImage(email_icon)
-# emailIcon_label = Label(design_frame4, image=photo, bg='#f8f8f8')
-# emailIcon_label.image = photo
-# emailIcon_label.place(x=105, y=174)
-
-# ===== password icon =========
-# password_icon = Image.open('images/pass_icon.png')
-# photo = ImageTk.PhotoImage(password_icon)
-# password_icon_label = Label(design_frame4, image=photo, bg='#f8f8f8')
-# password_icon_label.image = photo
-# password_icon_label.place(x=105, y=254)
 
 # ===== picture icon =========
 picture_icon = Image.open('images/pic_icon.png')
@@ -277,10 +336,6 @@ side_image_label.place(x=50, y=10)
 
 
 
-# forgotPassword = Button(design_frame4, text='Forgot password', font=("yu gothic ui", 8, "bold underline"), bg='#f8f8f8',
-#                         borderwidth=0, activebackground='#f8f8f8', command=lambda: forgot_password(), cursor="hand2")
-# forgotPassword.place(x=290, y=290)
-
 
 # =====================================================================================================================
 # =====================================================================================================================
@@ -292,9 +347,6 @@ side_image_label.place(x=50, y=10)
 # ==================== CONECTION PAGE =================================================================================
 # =====================================================================================================================
 # =====================================================================================================================
-
-# fundo_LoginPage = Listbox(LoginPage,bg='#0c71b9')
-# fundo_LoginPage.place(relx=0, rely=0,relwidth = 1, relheight = 1)
 
 #fundo da pagina de login
 design_frame5 = Listbox(LoginPage, bg='#0c71b9', highlightthickness=0, borderwidth=0)
@@ -346,22 +398,10 @@ checkButton = Checkbutton(design_frame8, bg='#f8f8f8', command=password_command2
 checkButton.place(x=290, y=330)
 
 
-# ========= Buttons ====================
-# SignUp_button = Button(LoginPage, text='Sign up', font=("yu gothic ui bold", 12), bg='#f8f8f8', fg="#89898b",
-#                        command=lambda: show_frame(CommandPage), borderwidth=0, activebackground='#1b87d2', cursor='hand2')
-# SignUp_button.place(x=1100, y=175)
-
-# SignUp_line = Canvas(LoginPage, width=60, height=5, bg='#1b87d2')
-# SignUp_line.place(x=1100, y=203)
-
 # ===== Welcome Label ==================
 welcome_label = Label(design_frame8, text='Welcome', font=('Arial', 20, 'bold'), bg='#f8f8f8')
 welcome_label.place(x=130, y=15)
 
-# ========= Login Button =========
-# login_button = Button(LoginPage, text='Login', font=("yu gothic ui bold", 12), bg='#f8f8f8', fg="#89898b",
-#                       borderwidth=0, activebackground='#1b87d2', command=lambda: show_frame(CommandPage), cursor='hand2')
-# login_button.place(x=845, y=175)
 
 # ==== SIGN UP down button ============
 Enter_button = Button(design_frame8, fg='#f8f8f8', text='Enter', bg='#1b87d2', font=("yu gothic ui bold", 15),
@@ -403,6 +443,42 @@ photo = ImageTk.PhotoImage(side_image)
 side_image_label = Label(design_frame7, image=photo, bg='#1e85d0')
 side_image_label.image = photo
 side_image_label.place(x=50, y=10)
+
+
+
+
+# =====================================================================================================================
+# =====================================================================================================================
+# ==================== LOADING PAGE =================================================================================
+# =====================================================================================================================
+# =====================================================================================================================
+
+#fundo da pagina de Carregamento
+design_frame9 = Listbox(LoadingPage, bg='#0c71b9', highlightthickness=0, borderwidth=0)
+design_frame9.place(relx=0, rely=0,relwidth = 1, relheight = 1)
+
+design_frame10 = Listbox(LoadingPage, bg='#1e85d0', width=115, height=50, highlightthickness=0, borderwidth=0)
+design_frame10.place(x=676, y=0)
+
+design_frame11 = Listbox(LoadingPage, bg='#1e85d0', width=100, height=33, highlightthickness=0, borderwidth=0)
+design_frame11.place(x=75, y=106)
+
+design_frame12 = Listbox(LoadingPage, bg='#f8f8f8', width=100, height=33, highlightthickness=0, borderwidth=0)
+design_frame12.place(x=676, y=106)
+
+
+# ===== Loading Label ==================
+loading_label = Label(design_frame12, text='Carregando. Por favor aguarde!', font=('Arial', 20, 'bold'), bg='#f8f8f8')
+loading_label.place(x=150, y=250)
+
+# ===== Left Side Picture ============
+side_image = Image.open('images/vector.png')
+photo = ImageTk.PhotoImage(side_image)
+side_image_label = Label(design_frame11, image=photo, bg='#1e85d0')
+side_image_label.image = photo
+side_image_label.place(x=50, y=10)
+
+
 
 
 window.mainloop()

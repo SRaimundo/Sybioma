@@ -1,0 +1,4 @@
+CREATE INDEX app_recompor_cod_imovel
+  ON public.app_recompor
+  USING btree
+    (gid ASC NULLS LAST);

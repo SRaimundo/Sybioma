@@ -1,0 +1,7 @@
+CREATE TABLE public."IMOV_APP"
+(
+    idi integer NOT NULL,
+    idapp integer NOT NULL,
+    CONSTRAINT "IMOV_APP_pkey" PRIMARY KEY (idi,idapp)
+);
+Commit;
