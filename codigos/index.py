@@ -3,6 +3,7 @@ from PIL import ImageTk, Image  # type "Pip install pillow" in your terminal to 
 # import sqlite3
 from tkinter import messagebox
 from SybiomaDB import *
+from descompactador import descompactar
 
 
 window = Tk()
@@ -30,7 +31,7 @@ def show_frame(frame):
     frame.tkraise()
 
 
-show_frame(CommandPage)
+show_frame(LoginPage)
 
 
 # ========== DATABASE  ============
@@ -203,6 +204,18 @@ def criaCodImovelIndiceRecompor():
         show_frame(CommandPage)
         return
 
+def descompacta():
+    try:
+        show_frame(LoadingPage)
+        descompactar()
+        messagebox.showinfo(title='Concluido', message='Itens descompatados com sucesso')
+        show_frame(CommandPage)
+    except:
+        messagebox.showwarning('Error', 'Erro ao descompactar arquivos')
+        show_frame(CommandPage)
+        return
+
+
 
 
  
@@ -307,6 +320,11 @@ Command9.place(x=10, y=460, width=200, height=50)
 Command10 = Button(design_frame4, fg='#f8f8f8', text='Popular Imovel App com os dados', bg='#1b87d2', font=("yu gothic ui bold",8),
                    cursor='hand2', activebackground='#1b87d2', command=populaImovApp)
 Command10.place(x=215, y=460, width=200, height=50)
+
+# Comando 18
+Command18 = Button(design_frame4, fg='#f8f8f8', text='Descompactar pasta', bg='#1b87d2', font=("yu gothic ui bold", 11),
+                   cursor='hand2', activebackground='#1b87d2', command=descompacta)
+Command18.place(x=420, y=535, width=195, height=50)
 
 # # Comando 11
 # Command11 = Button(design_frame4, fg='#f8f8f8', text='Corrigir formatacao App', bg='#1b87d2', font=("yu gothic ui bold", 11),
