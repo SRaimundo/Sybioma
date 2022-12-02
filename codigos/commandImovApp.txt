@@ -2,6 +2,6 @@ CREATE TABLE public."imovel_app"
 (
     idi integer NOT NULL,
     idapp integer NOT NULL,
-    CONSTRAINT "IMOV_APP_pkey" PRIMARY KEY (idi,idapp)
+    CONSTRAINT "IMOV_APP_pkey" PRIMARY KEY (idimovel,idapp)
 );
 Commit;

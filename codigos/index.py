@@ -279,12 +279,12 @@ Command2.place(x=215, y=85, width=200, height=50)
 #Comando 3
 Command3 = Button(design_frame4, fg='#f8f8f8', text='Inserir shapes AreaImovel', bg='#1b87d2', font=("yu gothic ui bold", 11),
                    cursor='hand2', activebackground='#1b87d2', command=InsereAreaImovel)
-Command3.place(x=10, y=190, width=200, height=50)
+Command3.place(x=215, y=190, width=200, height=50)
 
 # Comando 4
 Command4 = Button(design_frame4, fg='#f8f8f8', text='Criar tabela AreaImovel', bg='#1b87d2', font=("yu gothic ui bold", 11),
                    cursor='hand2', activebackground='#1b87d2', command=CriaAreaImovel)
-Command4.place(x=215, y=190, width=200, height=50)
+Command4.place(x=10, y=190, width=200, height=50)
 
 # APP RECOMPOR
 # Comando 5
