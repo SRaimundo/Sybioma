@@ -30,7 +30,7 @@ def show_frame(frame):
     frame.tkraise()
 
 
-show_frame(LoginPage)
+show_frame(CommandPage)
 
 
 # ========== DATABASE  ============
@@ -46,6 +46,7 @@ def connection():
     senha = str(password_entry.get())
     try:
         banco.setConnection('localhost',NomeBanco,conta, senha)
+        messagebox.showinfo(title='', message='Conexao bem sucedida')
         show_frame(CommandPage)
     except:
         messagebox.showwarning('Error', 'Senha ou login invalidos')
@@ -55,6 +56,7 @@ def CriaApp():
     try:
         show_frame(LoadingPage)
         banco.criarTabelaAPP()
+        messagebox.showinfo(title='', message='Tabela App criada com sucesso')
         show_frame(CommandPage)
     except:
         messagebox.showwarning('Error', 'Erro ao criar Tabela App')
@@ -65,6 +67,7 @@ def CriarAppRecompor():
     try:
         show_frame(LoadingPage)
         banco.criarTabelaAPPRecompor()
+        messagebox.showinfo(title='', message='Tabela AppRecompor criada com sucesso')
         show_frame(CommandPage)
     except:
         messagebox.showwarning('Error', 'Erro ao criar Tabela App Recompor')
@@ -75,6 +78,7 @@ def CriarImovApp():
     try:
         show_frame(LoadingPage)
         banco.criarTabelaImovApp()
+        messagebox.showinfo(title='', message='Tabela ImovApp criada com sucesso')
         show_frame(CommandPage)
     except:
         messagebox.showwarning('Error', 'Erro ao criar Tabela Imovel App')
@@ -85,6 +89,7 @@ def populaImovApp():
     try:
         show_frame(LoadingPage)
         banco.populaImovApp()
+        messagebox.showinfo(title='', message='ImovApp populada com sucesso')
         show_frame(CommandPage)
     except:
         messagebox.showwarning('Error', 'Erro ao popular tabela Imovel App')
@@ -96,6 +101,7 @@ def CriaAreaImovel():
     try:
         show_frame(LoadingPage)
         banco.criarTabelaAreaImovel()
+        messagebox.showinfo(title='', message='Tabela Area Imovel criada com sucesso')
         show_frame(CommandPage)
     except:
         messagebox.showwarning('Error', 'Erro ao criar Tabela Area Imovel')
@@ -106,6 +112,7 @@ def InsereApp():
     try:
         show_frame(LoadingPage)
         banco.percorreShapesApp()
+        messagebox.showinfo(title='Concluido', message='Shapes inseridos na tabela App')
         show_frame(CommandPage)
     except:
         messagebox.showwarning('Error', 'Erro ao inserir dados na tabela App')
@@ -116,6 +123,7 @@ def InsereAreaImovel():
     try:
         show_frame(LoadingPage)
         banco.percorreShapesAreaImovel()
+        messagebox.showinfo(title='Concluido', message='Shapes inseridos na tabela Area Imovel')
         show_frame(CommandPage)
     except:
         messagebox.showwarning('Error', 'Erro ao inserir dados na tabela Area Imovel')
@@ -166,6 +174,7 @@ def criaGeoIndiceRecompor():
     try:
         show_frame(LoadingPage)
         banco.criaGeoIndiceRecompor()
+        messagebox.showinfo(title='Concluido', message='Geo indice criado com sucesso na tabela App Recompor')
         show_frame(CommandPage)
     except:
         messagebox.showwarning('Error', 'Erro ao criar indice Geometrico em App Recompor')
@@ -176,6 +185,7 @@ def criaGidIndiceRecompor():
     try:
         show_frame(LoadingPage)
         banco.criaGidIndiceRecompor()
+        messagebox.showinfo(title='Concluido', message='Indice no GID criado com sucesso na tabela App Recompor')
         show_frame(CommandPage)
     except:
         messagebox.showwarning('Error', 'Erro ao criar indice do GID em App Recompor')
@@ -186,6 +196,7 @@ def criaCodImovelIndiceRecompor():
     try:
         show_frame(LoadingPage)
         banco.criaCodImovelIndiceRecompor()
+        messagebox.showinfo(title='Concluido', message='Indice codigo imovel criado com sucesso na tabela App Recompor')
         show_frame(CommandPage)
     except:
         messagebox.showwarning('Error', 'Erro ao criar indice do codigo imovel em App Recompor')
@@ -222,80 +233,103 @@ design_frame4.place(x=676, y=106)
 welcome_label = Label(design_frame4, text='Welcome', font=('Arial', 20, 'bold'), bg='#f8f8f8')
 welcome_label.place(x=130, y=15)
 
+# ===== App Label ==============
+app_label = Label(design_frame4, text='App', font=('Arial', 15, 'bold'), bg='#f8f8f8')
+app_label.place(x=10, y=50)
+
+# ===== Area Imovel Label ==============
+areaImovel_label = Label(design_frame4, text='Area Imovel', font=('Arial', 15, 'bold'), bg='#f8f8f8')
+areaImovel_label.place(x=10, y=155)
+
+# ===== App Recompor Label ==============
+AppRecompor = Label(design_frame4, text='App Recompor', font=('Arial', 15, 'bold'), bg='#f8f8f8')
+AppRecompor.place(x=10, y=260)
+
+# ===== Imovel App Label ==============
+AppRecompor = Label(design_frame4, text='Imovel App', font=('Arial', 15, 'bold'), bg='#f8f8f8')
+AppRecompor.place(x=10, y=425)
+
+
 
 # ==== Commands buttons  down button ============
+# APP
 Command1 = Button(design_frame4, fg='#f8f8f8', text='Criar tabela App', bg='#1b87d2', font=("yu gothic ui bold", 11),
                    cursor='hand2', activebackground='#1b87d2', command=CriaApp)
-Command1.place(x=10, y=120, width=215, height=50)
+Command1.place(x=10, y=85, width=200, height=50)
 
 # Comando 2
-Command2 = Button(design_frame4, fg='#f8f8f8', text='Criar tabela AreaImovel', bg='#1b87d2', font=("yu gothic ui bold", 11),
-                   cursor='hand2', activebackground='#1b87d2', command=CriaAreaImovel)
-Command2.place(x=235, y=120, width=215, height=50)
-
-# Comando 3
-Command3 = Button(design_frame4, fg='#f8f8f8', text='Inserir shapes App', bg='#1b87d2', font=("yu gothic ui bold", 11),
+Command2 = Button(design_frame4, fg='#f8f8f8', text='Inserir shapes App', bg='#1b87d2', font=("yu gothic ui bold", 11),
                    cursor='hand2', activebackground='#1b87d2', command=InsereApp)
-Command3.place(x=470, y=120, width=215, height=50)
+Command2.place(x=215, y=85, width=200, height=50)
 
-#Comando 4
-Command4 = Button(design_frame4, fg='#f8f8f8', text='Inserir shapes AreaImovel', bg='#1b87d2', font=("yu gothic ui bold", 11),
+# AREA IMOVEL
+#Comando 3
+Command3 = Button(design_frame4, fg='#f8f8f8', text='Inserir shapes AreaImovel', bg='#1b87d2', font=("yu gothic ui bold", 11),
                    cursor='hand2', activebackground='#1b87d2', command=InsereAreaImovel)
-Command4.place(x=10, y=190, width=215, height=50)
+Command3.place(x=10, y=190, width=200, height=50)
 
+# Comando 4
+Command4 = Button(design_frame4, fg='#f8f8f8', text='Criar tabela AreaImovel', bg='#1b87d2', font=("yu gothic ui bold", 11),
+                   cursor='hand2', activebackground='#1b87d2', command=CriaAreaImovel)
+Command4.place(x=215, y=190, width=200, height=50)
+
+# APP RECOMPOR
 # Comando 5
 Command5 = Button(design_frame4, fg='#f8f8f8', text='Criar App Recompor', bg='#1b87d2', font=("yu gothic ui bold", 11),
                    cursor='hand2', activebackground='#1b87d2', command=CriarAppRecompor)
-Command5.place(x=235, y=190, width=215, height=50)
+Command5.place(x=10, y=295, width=200, height=50)
 
 # Comando 6
 Command6 = Button(design_frame4, fg='#f8f8f8', text='Criar Geo indice App Recompor', bg='#1b87d2', font=("yu gothic ui bold", 9),
                    cursor='hand2', activebackground='#1b87d2', command=criaGeoIndiceRecompor)
-Command6.place(x=470, y=190, width=215, height=50)
+Command6.place(x=215, y=295, width=200, height=50)
 
 # Comando 7
 
 Command7 = Button(design_frame4, fg='#f8f8f8', text='Criar indice gid App Recompor', bg='#1b87d2', font=("yu gothic ui bold", 9),
                    cursor='hand2', activebackground='#1b87d2', command=criaGidIndiceRecompor)
-Command7.place(x=10, y=260, width=215, height=50)
+Command7.place(x=420, y=295, width=195, height=50)
 
 # Comando 8
-Command8 = Button(design_frame4, fg='#f8f8f8', text='Criar CodImovel indice Recompor', bg='#1b87d2', font=("yu gothic ui bold", 9),
+Command8 = Button(design_frame4, fg='#f8f8f8', text='Criar CodImovel indice Recompor', bg='#1b87d2', font=("yu gothic ui bold", 8),
                    cursor='hand2', activebackground='#1b87d2', command=criaCodImovelIndiceRecompor)
-Command8.place(x=235, y=260, width=215, height=50)
+Command8.place(x=10, y=355, width=200, height=50)
+
+# IMOVEL APP
 
 # Comando 9
-Command9 = Button(design_frame4, fg='#f8f8f8', text='Corrigir formatacao App', bg='#1b87d2', font=("yu gothic ui bold", 11),
-                   cursor='hand2', activebackground='#1b87d2', command=corrigirTextoApp)
-Command9.place(x=470, y=260, width=215, height=50)
 
-#Comando 10
-
-
-Command10 = Button(design_frame4, fg='#f8f8f8', text='Corrigir formatacao App Recompor', bg='#1b87d2', font=("yu gothic ui bold", 9),
-                   cursor='hand2', activebackground='#1b87d2', command=corrigirTextoAppRecompor)
-Command10.place(x=10, y=330, width=215, height=50)
-
-# Comando 11
-Command11 = Button(design_frame4, fg='#f8f8f8', text='Corrigir Condicao Area Imovel', bg='#1b87d2', font=("yu gothic ui bold", 9),
-                   cursor='hand2', activebackground='#1b87d2', command=corrigirTextoAreaImovelCond)
-Command11.place(x=235, y=330, width=215, height=50)
-
-# Comando 12
-Command12 = Button(design_frame4, fg='#f8f8f8', text='Corrigir NOM_TEMA Area Imovel', bg='#1b87d2', font=("yu gothic ui bold", 9),
-                   cursor='hand2', activebackground='#1b87d2', command=corrigirTextoAreaImovelNom)
-Command12.place(x=470, y=330, width=215, height=50)
-
-# Comando 13
-
-Command13 = Button(design_frame4, fg='#f8f8f8', text='Criar tabela Imovel App', bg='#1b87d2', font=("yu gothic ui bold", 11),
+Command9 = Button(design_frame4, fg='#f8f8f8', text='Criar tabela Imovel App', bg='#1b87d2', font=("yu gothic ui bold", 11),
                    cursor='hand2', activebackground='#1b87d2', command=CriarImovApp)
-Command13.place(x=10, y=400, width=215, height=50)
+Command9.place(x=10, y=460, width=200, height=50)
 
-# Comando 14
-Command14 = Button(design_frame4, fg='#f8f8f8', text='Popular Imovel App com os dados', bg='#1b87d2', font=("yu gothic ui bold", 9),
+# Comando 10
+Command10 = Button(design_frame4, fg='#f8f8f8', text='Popular Imovel App com os dados', bg='#1b87d2', font=("yu gothic ui bold",8),
                    cursor='hand2', activebackground='#1b87d2', command=populaImovApp)
-Command14.place(x=235, y=400, width=215, height=50)
+Command10.place(x=215, y=460, width=200, height=50)
+
+# # Comando 11
+# Command11 = Button(design_frame4, fg='#f8f8f8', text='Corrigir formatacao App', bg='#1b87d2', font=("yu gothic ui bold", 11),
+#                    cursor='hand2', activebackground='#1b87d2', command=corrigirTextoApp)
+# Command11.place(x=470, y=260, width=215, height=50)
+
+# #Comando 12
+
+
+# Command12 = Button(design_frame4, fg='#f8f8f8', text='Corrigir formatacao App Recompor', bg='#1b87d2', font=("yu gothic ui bold", 9),
+#                    cursor='hand2', activebackground='#1b87d2', command=corrigirTextoAppRecompor)
+# Command12.place(x=10, y=330, width=215, height=50)
+
+# # Comando 13
+# Command13 = Button(design_frame4, fg='#f8f8f8', text='Corrigir Condicao Area Imovel', bg='#1b87d2', font=("yu gothic ui bold", 9),
+#                    cursor='hand2', activebackground='#1b87d2', command=corrigirTextoAreaImovelCond)
+# Command13.place(x=235, y=330, width=215, height=50)
+
+# # Comando 14
+# Command14 = Button(design_frame4, fg='#f8f8f8', text='Corrigir NOM_TEMA Area Imovel', bg='#1b87d2', font=("yu gothic ui bold", 9),
+#                    cursor='hand2', activebackground='#1b87d2', command=corrigirTextoAreaImovelNom)
+# Command14.place(x=470, y=330, width=215, height=50)
+
 
 # # Comando 15
 # Command15 = Button(design_frame4, fg='#f8f8f8', text='Command15', bg='#1b87d2', font=("yu gothic ui bold", 15),
