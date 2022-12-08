@@ -8,7 +8,7 @@ from shapely.geometry import Polygon
 
 class SybiomaDB:
 
-    _sslmode = "require"
+    # _sslmode = "require"
 
     # def __init__(self):
         
@@ -17,7 +17,7 @@ class SybiomaDB:
         self._dbname = dbname
         self._user = user
         self._password = password
-        con_string = "host={0} user={1} dbname={2} password={3} sslmode={4}".format(self._host, self._user, self._dbname, self._password, self._sslmode)
+        con_string = "host={0} user={1} dbname={2} password={3}".format(self._host, self._user, self._dbname, self._password)
         self._connection = psycopg2.connect(con_string) 
         self._cursor = self._connection.cursor()
         self.criarPrepareApp = True
@@ -73,8 +73,8 @@ class SybiomaDB:
                 table.geometry = [MultiPolygon([feature]) if isinstance(feature, Polygon) else feature for feature in table.geometry ]
                 quant = table.shape[0]
                 cidade=shapes.split("SHAPE_")[1]
-                table = gpd.read_file(f'{diretorio}/{shapes}/APP.shp' , encoding='utf-8',char_decode_errors='ignore') #.to_wkb()
-                table.geometry = [MultiPolygon([feature]) if isinstance(feature, Polygon) else feature for feature in table.geometry ]
+                # table = gpd.read_file(f'{diretorio}/{shapes}/APP.shp' , encoding='utf-8',char_decode_errors='ignore') #.to_wkb()
+                # table.geometry = [MultiPolygon([feature]) if isinstance(feature, Polygon) else feature for feature in table.geometry ]
                 i = 0
                 while i<quant :
                     self._cursor.execute("execute planoInsertApp (%s, %s, %s, %s,%s)",  (cidade, str(table.IDF[i]), str(table.NOM_TEMA[i]), table.NUM_AREA[i],str(table.geometry[i])))
@@ -99,7 +99,7 @@ class SybiomaDB:
                     table = gpd.read_file(f'{diretorio}/{shapes}/AREA_IMOVEL.shp' , encoding='utf-8',char_decode_errors='ignore')
                     quant = table.shape[0]
                     cidade=shapes.split("SHAPE_")[1]
-                    table = gpd.read_file(f'{diretorio}/{shapes}/AREA_IMOVEL.shp' , encoding='utf-8',char_decode_errors='ignore') #.to_wkb()
+                    # table = gpd.read_file(f'{diretorio}/{shapes}/AREA_IMOVEL.shp' , encoding='utf-8',char_decode_errors='ignore') #.to_wkb()
                     table.geometry = [MultiPolygon([feature]) if isinstance(feature, Polygon) else feature for feature in table.geometry ]
                     i = 0
                     

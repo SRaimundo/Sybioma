@@ -9,14 +9,14 @@ from descompactador import descompactar
 window = Tk()
 window.rowconfigure(0, weight=1)
 window.columnconfigure(0, weight=1)
-window.attributes('-zoomed', True)
-# window.state('zoomed')
+# window.attributes('-zoomed', True)
+window.state('zoomed')
 window.resizable(0, 0)
 window.title('Sybioma System')
 
 
 # Window Icon Photo
-icon = PhotoImage('images/pic_icon.png')
+icon = PhotoImage(file='images/pic_icon.png')
 window.iconphoto(True, icon)
 
 CommandPage = Frame(window)
@@ -242,89 +242,92 @@ design_frame4 = Listbox(CommandPage, bg='#f8f8f8', width=100, height=33, highlig
 design_frame4.place(x=676, y=106)
 
 
-# ===== Welcome Label ==============
-welcome_label = Label(design_frame4, text='Welcome', font=('Arial', 20, 'bold'), bg='#f8f8f8')
-welcome_label.place(x=130, y=15)
+# ===== Utilitarios Label ==============
+utilitario_label = Label(design_frame4, text='Utilitarios', font=('Arial', 15, 'bold'), bg='#f8f8f8')
+utilitario_label.place(x=10, y=15) #105 25
 
 # ===== App Label ==============
 app_label = Label(design_frame4, text='App', font=('Arial', 15, 'bold'), bg='#f8f8f8')
-app_label.place(x=10, y=50)
+app_label.place(x=10, y=120)
 
 # ===== Area Imovel Label ==============
 areaImovel_label = Label(design_frame4, text='Area Imovel', font=('Arial', 15, 'bold'), bg='#f8f8f8')
-areaImovel_label.place(x=10, y=155)
+areaImovel_label.place(x=10, y=225)
 
 # ===== App Recompor Label ==============
 AppRecompor = Label(design_frame4, text='App Recompor', font=('Arial', 15, 'bold'), bg='#f8f8f8')
-AppRecompor.place(x=10, y=260)
+AppRecompor.place(x=10, y=330)
 
 # ===== Imovel App Label ==============
 AppRecompor = Label(design_frame4, text='Imovel App', font=('Arial', 15, 'bold'), bg='#f8f8f8')
-AppRecompor.place(x=10, y=425)
+AppRecompor.place(x=10, y=485)
 
 
 
 # ==== Commands buttons  down button ============
+
+# Comando 18
+Command18 = Button(design_frame4, fg='#f8f8f8', text='Descompactar pasta', bg='#1b87d2', font=("yu gothic ui bold", 11),
+                   cursor='hand2', activebackground='#1b87d2', command=descompacta)
+Command18.place(x=10, y=40, width=195, height=50)
+
 # APP
 Command1 = Button(design_frame4, fg='#f8f8f8', text='Criar tabela App', bg='#1b87d2', font=("yu gothic ui bold", 11),
                    cursor='hand2', activebackground='#1b87d2', command=CriaApp)
-Command1.place(x=10, y=85, width=200, height=50)
+Command1.place(x=10, y=145, width=200, height=50)
 
 # Comando 2
 Command2 = Button(design_frame4, fg='#f8f8f8', text='Inserir shapes App', bg='#1b87d2', font=("yu gothic ui bold", 11),
                    cursor='hand2', activebackground='#1b87d2', command=InsereApp)
-Command2.place(x=215, y=85, width=200, height=50)
+Command2.place(x=215, y=145, width=200, height=50)
 
 # AREA IMOVEL
 #Comando 3
 Command3 = Button(design_frame4, fg='#f8f8f8', text='Inserir shapes AreaImovel', bg='#1b87d2', font=("yu gothic ui bold", 11),
                    cursor='hand2', activebackground='#1b87d2', command=InsereAreaImovel)
-Command3.place(x=215, y=190, width=200, height=50)
+Command3.place(x=215, y=250, width=200, height=50)
 
 # Comando 4
 Command4 = Button(design_frame4, fg='#f8f8f8', text='Criar tabela AreaImovel', bg='#1b87d2', font=("yu gothic ui bold", 11),
                    cursor='hand2', activebackground='#1b87d2', command=CriaAreaImovel)
-Command4.place(x=10, y=190, width=200, height=50)
+Command4.place(x=10, y=250, width=200, height=50)
 
 # APP RECOMPOR
 # Comando 5
 Command5 = Button(design_frame4, fg='#f8f8f8', text='Criar App Recompor', bg='#1b87d2', font=("yu gothic ui bold", 11),
                    cursor='hand2', activebackground='#1b87d2', command=CriarAppRecompor)
-Command5.place(x=10, y=295, width=200, height=50)
+Command5.place(x=10, y=355, width=200, height=50)
 
 # Comando 6
 Command6 = Button(design_frame4, fg='#f8f8f8', text='Criar Geo indice App Recompor', bg='#1b87d2', font=("yu gothic ui bold", 9),
                    cursor='hand2', activebackground='#1b87d2', command=criaGeoIndiceRecompor)
-Command6.place(x=215, y=295, width=200, height=50)
+Command6.place(x=215, y=355, width=200, height=50)
 
 # Comando 7
 
 Command7 = Button(design_frame4, fg='#f8f8f8', text='Criar indice gid App Recompor', bg='#1b87d2', font=("yu gothic ui bold", 9),
                    cursor='hand2', activebackground='#1b87d2', command=criaGidIndiceRecompor)
-Command7.place(x=420, y=295, width=195, height=50)
+Command7.place(x=420, y=355, width=195, height=50)
 
 # Comando 8
 Command8 = Button(design_frame4, fg='#f8f8f8', text='Criar CodImovel indice Recompor', bg='#1b87d2', font=("yu gothic ui bold", 8),
                    cursor='hand2', activebackground='#1b87d2', command=criaCodImovelIndiceRecompor)
-Command8.place(x=10, y=355, width=200, height=50)
+Command8.place(x=10, y=405, width=200, height=50)
 
 # IMOVEL APP
 
 # Comando 9
 
 Command9 = Button(design_frame4, fg='#f8f8f8', text='Criar tabela Imovel App', bg='#1b87d2', font=("yu gothic ui bold", 11),
-                   cursor='hand2', activebackground='#1b87d2', command=CriarImovApp)
-Command9.place(x=10, y=460, width=200, height=50)
+                cursor='hand2', activebackground='#1b87d2', command=CriarImovApp)
+Command9.place(x=10, y=510, width=200, height=50)
 
 # Comando 10
 Command10 = Button(design_frame4, fg='#f8f8f8', text='Popular Imovel App com os dados', bg='#1b87d2', font=("yu gothic ui bold",8),
-                   cursor='hand2', activebackground='#1b87d2', command=populaImovApp)
-Command10.place(x=215, y=460, width=200, height=50)
+                cursor='hand2', activebackground='#1b87d2', command=populaImovApp)
+Command10.place(x=215, y=510, width=200, height=50)
 
-# Comando 18
-Command18 = Button(design_frame4, fg='#f8f8f8', text='Descompactar pasta', bg='#1b87d2', font=("yu gothic ui bold", 11),
-                   cursor='hand2', activebackground='#1b87d2', command=descompacta)
-Command18.place(x=420, y=535, width=195, height=50)
+
 
 # # Comando 11
 # Command11 = Button(design_frame4, fg='#f8f8f8', text='Corrigir formatacao App', bg='#1b87d2', font=("yu gothic ui bold", 11),
@@ -372,12 +375,12 @@ Command18.place(x=420, y=535, width=195, height=50)
 
 
 
-# ===== picture icon =========
-picture_icon = Image.open('images/pic_icon.png')
-photo = ImageTk.PhotoImage(picture_icon)
-picture_icon_label = Label(design_frame4, image=photo, bg='#f8f8f8')
-picture_icon_label.image = photo
-picture_icon_label.place(x=280, y=5)
+# # ===== picture icon =========
+# picture_icon = Image.open('images/pic_icon.png')
+# photo = ImageTk.PhotoImage(picture_icon)
+# picture_icon_label = Label(design_frame4, image=photo, bg='#f8f8f8')
+# picture_icon_label.image = photo
+# picture_icon_label.place(x=280, y=5)
 
 # ===== Left Side Picture ============
 side_image = Image.open('images/vector.png')

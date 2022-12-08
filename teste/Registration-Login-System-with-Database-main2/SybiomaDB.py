@@ -2,6 +2,7 @@ import psycopg2
 import sys
 import os
 import geopandas as gpd
+from tkinter import filedialog
 
 class SybiomaDB:
 
@@ -42,7 +43,8 @@ class SybiomaDB:
             comando = arquivo.read().format(COD_IMOVEL,NUM_AREA, COD_ESTADO, NOM_MUNICI, NUM_MODULO, TIPO_IMOVE, SITUACAO, CONDICAO_I, geometry)
         self._cursor.execute(comando)
     
-    def percorreShapesApp(self,diretorio):
+    def percorreShapesApp(self):
+        diretorio = filedialog.askdirectory()
         lista_dir_atual = os.listdir(diretorio)
         
         for shapes in lista_dir_atual:
