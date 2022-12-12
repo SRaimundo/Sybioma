@@ -1,6 +1,6 @@
 CREATE TABLE public."imovel_app"
 (
-    idi integer NOT NULL,
+    idimovel integer NOT NULL,
     idapp integer NOT NULL,
     CONSTRAINT "IMOV_APP_pkey" PRIMARY KEY (idimovel,idapp)
 );

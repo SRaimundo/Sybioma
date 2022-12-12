@@ -248,19 +248,19 @@ utilitario_label.place(x=10, y=15) #105 25
 
 # ===== App Label ==============
 app_label = Label(design_frame4, text='App', font=('Arial', 15, 'bold'), bg='#f8f8f8')
-app_label.place(x=10, y=120)
+app_label.place(x=10, y=100)
 
 # ===== Area Imovel Label ==============
 areaImovel_label = Label(design_frame4, text='Area Imovel', font=('Arial', 15, 'bold'), bg='#f8f8f8')
-areaImovel_label.place(x=10, y=225)
+areaImovel_label.place(x=10, y=185)
 
 # ===== App Recompor Label ==============
 AppRecompor = Label(design_frame4, text='App Recompor', font=('Arial', 15, 'bold'), bg='#f8f8f8')
-AppRecompor.place(x=10, y=330)
+AppRecompor.place(x=10, y=270)
 
 # ===== Imovel App Label ==============
 AppRecompor = Label(design_frame4, text='Imovel App', font=('Arial', 15, 'bold'), bg='#f8f8f8')
-AppRecompor.place(x=10, y=485)
+AppRecompor.place(x=10, y=415)
 
 
 
@@ -274,45 +274,45 @@ Command18.place(x=10, y=40, width=195, height=50)
 # APP
 Command1 = Button(design_frame4, fg='#f8f8f8', text='Criar tabela App', bg='#1b87d2', font=("yu gothic ui bold", 11),
                    cursor='hand2', activebackground='#1b87d2', command=CriaApp)
-Command1.place(x=10, y=145, width=200, height=50)
+Command1.place(x=10, y=125, width=200, height=50)
 
 # Comando 2
 Command2 = Button(design_frame4, fg='#f8f8f8', text='Inserir shapes App', bg='#1b87d2', font=("yu gothic ui bold", 11),
                    cursor='hand2', activebackground='#1b87d2', command=InsereApp)
-Command2.place(x=215, y=145, width=200, height=50)
+Command2.place(x=215, y=125, width=200, height=50)
 
 # AREA IMOVEL
 #Comando 3
 Command3 = Button(design_frame4, fg='#f8f8f8', text='Inserir shapes AreaImovel', bg='#1b87d2', font=("yu gothic ui bold", 11),
                    cursor='hand2', activebackground='#1b87d2', command=InsereAreaImovel)
-Command3.place(x=215, y=250, width=200, height=50)
+Command3.place(x=215, y=210, width=200, height=50)
 
 # Comando 4
 Command4 = Button(design_frame4, fg='#f8f8f8', text='Criar tabela AreaImovel', bg='#1b87d2', font=("yu gothic ui bold", 11),
                    cursor='hand2', activebackground='#1b87d2', command=CriaAreaImovel)
-Command4.place(x=10, y=250, width=200, height=50)
+Command4.place(x=10, y=210, width=200, height=50)
 
 # APP RECOMPOR
 # Comando 5
 Command5 = Button(design_frame4, fg='#f8f8f8', text='Criar App Recompor', bg='#1b87d2', font=("yu gothic ui bold", 11),
                    cursor='hand2', activebackground='#1b87d2', command=CriarAppRecompor)
-Command5.place(x=10, y=355, width=200, height=50)
+Command5.place(x=10, y=295, width=200, height=50)
 
 # Comando 6
 Command6 = Button(design_frame4, fg='#f8f8f8', text='Criar Geo indice App Recompor', bg='#1b87d2', font=("yu gothic ui bold", 9),
                    cursor='hand2', activebackground='#1b87d2', command=criaGeoIndiceRecompor)
-Command6.place(x=215, y=355, width=200, height=50)
+Command6.place(x=215, y=295, width=200, height=50)
 
 # Comando 7
 
 Command7 = Button(design_frame4, fg='#f8f8f8', text='Criar indice gid App Recompor', bg='#1b87d2', font=("yu gothic ui bold", 9),
                    cursor='hand2', activebackground='#1b87d2', command=criaGidIndiceRecompor)
-Command7.place(x=420, y=355, width=195, height=50)
+Command7.place(x=420, y=295, width=195, height=50)
 
 # Comando 8
 Command8 = Button(design_frame4, fg='#f8f8f8', text='Criar CodImovel indice Recompor', bg='#1b87d2', font=("yu gothic ui bold", 8),
                    cursor='hand2', activebackground='#1b87d2', command=criaCodImovelIndiceRecompor)
-Command8.place(x=10, y=405, width=200, height=50)
+Command8.place(x=10, y=355, width=200, height=50)
 
 # IMOVEL APP
 
@@ -320,58 +320,13 @@ Command8.place(x=10, y=405, width=200, height=50)
 
 Command9 = Button(design_frame4, fg='#f8f8f8', text='Criar tabela Imovel App', bg='#1b87d2', font=("yu gothic ui bold", 11),
                 cursor='hand2', activebackground='#1b87d2', command=CriarImovApp)
-Command9.place(x=10, y=510, width=200, height=50)
+Command9.place(x=10, y=440, width=200, height=50)
 
 # Comando 10
 Command10 = Button(design_frame4, fg='#f8f8f8', text='Popular Imovel App com os dados', bg='#1b87d2', font=("yu gothic ui bold",8),
                 cursor='hand2', activebackground='#1b87d2', command=populaImovApp)
-Command10.place(x=215, y=510, width=200, height=50)
+Command10.place(x=215, y=440, width=200, height=50)
 
-
-
-# # Comando 11
-# Command11 = Button(design_frame4, fg='#f8f8f8', text='Corrigir formatacao App', bg='#1b87d2', font=("yu gothic ui bold", 11),
-#                    cursor='hand2', activebackground='#1b87d2', command=corrigirTextoApp)
-# Command11.place(x=470, y=260, width=215, height=50)
-
-# #Comando 12
-
-
-# Command12 = Button(design_frame4, fg='#f8f8f8', text='Corrigir formatacao App Recompor', bg='#1b87d2', font=("yu gothic ui bold", 9),
-#                    cursor='hand2', activebackground='#1b87d2', command=corrigirTextoAppRecompor)
-# Command12.place(x=10, y=330, width=215, height=50)
-
-# # Comando 13
-# Command13 = Button(design_frame4, fg='#f8f8f8', text='Corrigir Condicao Area Imovel', bg='#1b87d2', font=("yu gothic ui bold", 9),
-#                    cursor='hand2', activebackground='#1b87d2', command=corrigirTextoAreaImovelCond)
-# Command13.place(x=235, y=330, width=215, height=50)
-
-# # Comando 14
-# Command14 = Button(design_frame4, fg='#f8f8f8', text='Corrigir NOM_TEMA Area Imovel', bg='#1b87d2', font=("yu gothic ui bold", 9),
-#                    cursor='hand2', activebackground='#1b87d2', command=corrigirTextoAreaImovelNom)
-# Command14.place(x=470, y=330, width=215, height=50)
-
-
-# # Comando 15
-# Command15 = Button(design_frame4, fg='#f8f8f8', text='Command15', bg='#1b87d2', font=("yu gothic ui bold", 15),
-#                    cursor='hand2', activebackground='#1b87d2', command=lambda: login())
-# Command15.place(x=470, y=400, width=215, height=50)
-
-# #Comando 16
-
-# Command16 = Button(design_frame4, fg='#f8f8f8', text='Command16', bg='#1b87d2', font=("yu gothic ui bold", 15),
-#                    cursor='hand2', activebackground='#1b87d2', command=lambda: login())
-# Command16.place(x=10, y=470, width=215, height=50)
-
-# # Comando 17
-# Command17 = Button(design_frame4, fg='#f8f8f8', text='Command17', bg='#1b87d2', font=("yu gothic ui bold", 15),
-#                    cursor='hand2', activebackground='#1b87d2', command=lambda: login())
-# Command17.place(x=235, y=470, width=215, height=50)
-
-# # Comando 18
-# Command18 = Button(design_frame4, fg='#f8f8f8', text='Command18', bg='#1b87d2', font=("yu gothic ui bold", 15),
-#                    cursor='hand2', activebackground='#1b87d2', command=lambda: login())
-# Command18.place(x=470, y=470, width=215, height=50)
 
 
 
@@ -389,12 +344,6 @@ side_image_label = Label(design_frame3, image=photo, bg='#1e85d0')
 side_image_label.image = photo
 side_image_label.place(x=50, y=10)
 
-
-
-
-# =====================================================================================================================
-# =====================================================================================================================
-# =====================================================================================================================
 
 
 # =====================================================================================================================

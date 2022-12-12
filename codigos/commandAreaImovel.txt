@@ -12,5 +12,5 @@ CREATE TABLE "area_imovel" (gid serial,
 "situacao" varchar(2),
 "condicao_i" varchar(85));
 ALTER TABLE "area_imovel" ADD PRIMARY KEY (gid);
-SELECT AddGeometryColumn('','area_imovel','geom','0','MULTIPOLYGON',2);
+SELECT AddGeometryColumn('','area_imovel','geom','0','GEOMETRY',2);
 COMMIT;

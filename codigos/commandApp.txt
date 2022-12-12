@@ -7,5 +7,5 @@ CREATE TABLE "app" (gid serial,
 "nom_tema" text,
 "num_area" numeric);
 ALTER TABLE "app" ADD PRIMARY KEY (gid);
-SELECT AddGeometryColumn('','app','geom','0','MULTIPOLYGON',2);
+SELECT AddGeometryColumn('','app','geom','0','GEOMETRY',2);
 COMMIT;
