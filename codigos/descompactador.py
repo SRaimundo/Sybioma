@@ -16,9 +16,7 @@ def descompactar():
             extrair.extractall(nome_pasta)
             # os.remove(f'{nome_arquivo}/{diretorios}')
     
-    for diretorios in lista_dir:
-        if '.zip' in diretorios or '.rar' in diretorios:
-            os.remove(f'{nome_arquivo}/{diretorios}')
+    
 
     lista_dir = os.listdir(nome_arquivo)
 
@@ -31,6 +29,11 @@ def descompactar():
                     extrair.extractall(f'{nome_arquivo}/{diretorios}')
                     # os.remove(f'{nome_arquivo}/{diretorios}/{shapes}')
     
+    extrair.close()
+
+    for diretorios in lista_dir:
+        if '.zip' in diretorios or '.rar' in diretorios:
+            os.remove(f'{nome_arquivo}/{diretorios}')
 
     for diretorios in lista_dir:
         if os.path.isdir(f'{nome_arquivo}/{diretorios}'):
@@ -38,6 +41,4 @@ def descompactar():
             for shapes in lista_shapes:
                 if '.zip' in shapes or '.rar' in shapes:
                     os.remove(f'{nome_arquivo}/{diretorios}/{shapes}')
-    
-    extrair.close()
 
