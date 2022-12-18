@@ -14,7 +14,6 @@ def descompactar():
             os.mkdir(nome_pasta)
             extrair = zipfile.ZipFile(f'{nome_arquivo}/{diretorios}')
             extrair.extractall(nome_pasta)
-            # os.remove(f'{nome_arquivo}/{diretorios}')
     
     
 
@@ -27,7 +26,6 @@ def descompactar():
                 if '.zip' in shapes or '.rar' in shapes:
                     extrair = zipfile.ZipFile(f'{nome_arquivo}/{diretorios}/{shapes}')
                     extrair.extractall(f'{nome_arquivo}/{diretorios}')
-                    # os.remove(f'{nome_arquivo}/{diretorios}/{shapes}')
     
     extrair.close()
 

@@ -1,6 +1,5 @@
 from tkinter import *
 from PIL import ImageTk, Image  # type "Pip install pillow" in your terminal to install ImageTk and Image module
-# import sqlite3
 from tkinter import messagebox
 from SybiomaDB import *
 from descompactador import descompactar
@@ -9,8 +8,8 @@ from descompactador import descompactar
 window = Tk()
 window.rowconfigure(0, weight=1)
 window.columnconfigure(0, weight=1)
-# window.attributes('-zoomed', True)
-window.state('zoomed')
+# window.attributes('-zoomed', True) #Habilitar em caso de sistema linux
+window.state('zoomed') #Desabilitar em caso de sistema linux
 window.resizable(0, 0)
 window.title('Sybioma System')
 
