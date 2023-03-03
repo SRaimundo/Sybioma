@@ -1,0 +1,39 @@
+idp,original,nova
+1,"​Analisado, em conformidade com a Lei nº 12.651/2012, passível de emissão de Cota de Reserva Ambiental","​Analisado, em conformidade com a Lei nº 12.651/2012, passível de emissão de Cota de Reserva Ambiental"
+2,"Analisado, em conformidade com a Lei nº 12.651/2012, passível de emissão de Cota de Reserva Ambiental","​Analisado, em conformidade com a Lei nº 12.651/2012, passível de emissão de Cota de Reserva Ambiental"
+3,Aguardando análise,Aguardando análise
+4,Aguardando analise,Aguardando análise
+5,AGUARDANDO_ANALISE,Aguardando análise
+6,"Aguardando análise, não passível de revisão de dados","Aguardando análise, não passível de revisão de dados"
+7,"Aguardando análise, passível de revisão de dados","Aguardando análise, passível de revisão de dados"
+8,ANALISADO,Analisado
+9,"Analisado com pendências, aguardando apresentação de documentos","Analisado com pendências, aguardando apresentação de documentos"
+10,ANALISADO_COM_PENDENCIAS_AGUARDANDO_APRESENTACAO_DOCUMENTOS,"Analisado com pendências, aguardando apresentação de documentos"
+11,"Analisado com pendências, aguardando atendimento a outras restrições","Analisado com pendências, aguardando atendimento a outras restrições"
+12,"Analisado com pendências, aguardando retificação","Analisado com pendências, aguardando retificação"
+13,ANALISADO_COM_PENDENCIAS_AGUARDANDO_RETIFICACAO,"Analisado com pendências, aguardando retificação"
+14,"Analisado com pendências, aguardando retificação e/ou apresentação de documentos","Analisado com pendências, aguardando retificação e/ou apresentação de documentos"
+15,ANALISADO_COM_PENDENCIAS_AGUARDANDO_RETIFICACAO_E_OU_APRESENTACAO_DOCUMENTOS,"Analisado com pendências, aguardando retificação e/ou apresentação de documentos"
+16,Analisado pelo Filtro Automático,Analisado pelo filtro automático
+17,Analisado por Filtro Automático,Analisado pelo filtro automático
+18,Analisado sem pendências,Analisado sem pendências
+19,ANALISADO_SEM_PENDENCIAS,Analisado sem pendências
+20,"Analisado, aguardando regularização ambiental (Lei nº 12.651/2012)","Analisado, aguardando regularização ambiental (Lei nº 12.651/2012)"
+21,ANALISADO_AGUARDANDO_REGULARIZACAO_AMBIENTAL,"Analisado, aguardando regularização ambiental (Lei nº 12.651/2012)"
+22,"Analisado, em conformidade com a Lei nº 12.651/2012","Analisado, em conformidade com a Lei nº 12.651/2012"
+23,"Analisado, em conformidade com a Lei nº 12.651/2012​","Analisado, em conformidade com a Lei nº 12.651/2012"
+24,ANALISADO_EM_REGULARIZACAO_AMBIENTAL,Analisado em regularização ambiental
+25,Cancelado por decisão administrativa,Cancelado por decisão administrativa
+26,CANCELADO_POR_DECISAO_ADMINISTRATIVA,Cancelado por decisão administrativa
+27,Cancelado por decisão judicial,Cancelado por decisão judicial
+28,CANCELADO_POR_DECISAO_JUDICIAL,Cancelado por decisão judicial
+29,Decisão Administrativa,Decisão administrativa
+30,DECISAO_ADMINISTRATIVA,Decisão administrativa
+31,Em análise,Em análise
+32,EM_ANALISE,Em análise
+33,Em processo de revisão de dados,Em processo de revisão de dados
+34,Em Retificação Dinamizada,Em retificação dinamizada
+35,Retificação Automática,Retificação automática
+36,"Revisado, aguardando aceite pelo proprietário","Revisado, aguardando aceite pelo proprietário"
+37,"Revisado, aguardando análise da equipe","Revisado, aguardando análise da equipe"
+38,"Revisado, aguardando Análise da Regularidade Ambiental","Revisado, aguardando análise da regularidade ambiental"
