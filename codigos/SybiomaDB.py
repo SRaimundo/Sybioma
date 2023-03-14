@@ -3,7 +3,7 @@ import sys
 import os
 import csv
 import geopandas as gpd
-from tkinter import filedialog
+from tkinter import filedialog, Label
 from tkinter import messagebox
 from shapely.geometry import MultiPolygon
 from shapely.geometry import Polygon
@@ -103,6 +103,16 @@ class SybiomaDB:
 
         progress["maximum"] = quantShapes
         progress["value"] = 0.5
+
+        quantCarregadas = 0
+        quantTotal = quantShapes
+
+        if(res==False):
+            quantTotal-=len(repetidas)
+
+        
+        load_label = Label(root, text="{0}/{1} cidades carregadas".format(quantCarregadas,quantTotal), font=('Arial', 12, 'bold'), bg='#f8f8f8')
+        load_label.place(x=826, y=440)
         
         
         
@@ -133,9 +143,12 @@ class SybiomaDB:
                         self._connection.commit()
                 self._connection.commit()
                 progress["value"]+=1
+                quantCarregadas+=1
+                load_label["text"] = "{0}/{1} cidades carregadas".format(quantCarregadas,quantTotal)
                 root.update_idletasks()
         
         progress.destroy()
+        load_label.destroy()
 
     
     def percorreShapesAreaImovel(self,root):
@@ -181,6 +194,16 @@ class SybiomaDB:
         progress["maximum"] = quantShapes
         progress["value"] = 0.5
 
+        quantCarregadas = 0
+        quantTotal = quantShapes
+
+        if(res==False):
+            quantTotal-=len(repetidas)
+
+        
+        load_label = Label(root, text="{0}/{1} cidades carregadas".format(quantCarregadas,quantTotal), font=('Arial', 12, 'bold'), bg='#f8f8f8')
+        load_label.place(x=826, y=440)
+
         for shapes in lista_dir_atual:
             if os.path.isdir(f'{diretorio}/{shapes}'):
                 if f'AREA_IMOVEL.shp' in os.listdir(f'{diretorio}/{shapes}'):
@@ -209,9 +232,12 @@ class SybiomaDB:
                             self._connection.commit()
                     self._connection.commit()
                     progress["value"]+=1
+                    quantCarregadas+=1
+                    load_label["text"] = "{0}/{1} cidades carregadas".format(quantCarregadas,quantTotal)
                     root.update_idletasks()
         
         progress.destroy()
+        load_label.destroy()
     
     def corrigirTextoApp(self):
         self._cursor.execute("update app set nom_tema=lower(convert_from(convert(SUBSTRING(nom_tema,0,99)::bytea, 'UTF8', 'LATIN1'), 'UTF8'));Commit;")
@@ -249,10 +275,12 @@ class SybiomaDB:
         sqlDelete = "DROP TABLE IF EXISTS padronizacao_condicao_i;"
         self._cursor.execute(sqlDelete)
         self._connection.commit()
+        print(1)
 
 
-        sqlCreate = 'SET CLIENT_ENCODING TO UTF8; CREATE TABLE "padronizacao_condicao_i" ("idp" integer, "original" text,"nova" text); ALTER TABLE "correcao" ADD PRIMARY KEY (idp); '
+        sqlCreate = 'CREATE TABLE "padronizacao_condicao_i" ("idp" integer, "original" text,"nova" text); ALTER TABLE "padronizacao_condicao_i" ADD PRIMARY KEY (idp); '
         self._cursor.execute(sqlCreate)
+        print(2)
         self._connection.commit()
 
         with open(arquivo.name, 'r') as f:
@@ -262,6 +290,7 @@ class SybiomaDB:
                 self._cursor.execute("INSERT INTO padronizacao_condicao_i(idp,original,nova) VALUES (%s, %s, %s)", row)
         
         self._connection.commit()
+        print(3)
         
         sqlPadronizacao = "UPDATE area_imovel SET condicao_i = padr.nova from padronizacao_condicao_i as padr where condicao_i = padr.original"
         self._cursor.execute(sqlPadronizacao)

@@ -1,0 +1,13 @@
+idp,original,nova
+1,Em análise,1Em análise
+2,Aguardando analise,1Aguardando analise
+3,"Aguardando análise, não passível de revisão de dados","1Aguardando análise, não passível de revisão de dados"
+4,CANCELADO_POR_DECISAO_ADMINISTRATIVA,1CANCELADO_POR_DECISAO_ADMINISTRATIVA
+5,"Analisado com pendências, aguardando apresentação de documentos","1Analisado com pendências, aguardando apresentação de documentos"
+6,Analisado pelo Filtro Automático,1Analisado pelo Filtro Automático
+7,Aguardando análise,1Aguardando análise
+8,CANCELADO_POR_DECISAO_JUDICIAL,1CANCELADO_POR_DECISAO_JUDICIAL
+9,"Analisado com pendências, aguardando retificação","1Analisado com pendências, aguardando retificação"
+10,Analisado sem pendências,1Analisado sem pendências
+11,"Analisado, aguardando regularização ambiental (Lei nº 12.651/2012)","1Analisado, aguardando regularização ambiental (Lei nº 12.651/2012)"
+12,"Analisado com pendências, aguardando retificação e/ou apresentação de documentos","1Analisado com pendências, aguardando retificação e/ou apresentação de documentos"

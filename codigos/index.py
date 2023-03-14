@@ -8,8 +8,8 @@ from descompactador import descompactar
 window = Tk()
 window.rowconfigure(0, weight=1)
 window.columnconfigure(0, weight=1)
-# window.attributes('-zoomed', True) #Habilitar em caso de sistema linux
-window.state('zoomed') #Desabilitar em caso de sistema linux
+window.attributes('-zoomed', True) #Habilitar em caso de sistema linux
+# window.state('zoomed') #Desabilitar em caso de sistema linux
 window.resizable(0, 0)
 window.title('Sybioma System')
 
@@ -304,7 +304,7 @@ Command4.place(x=10, y=210, width=200, height=50)
 
 # Comando 5
 Command5 = Button(design_frame4, fg='#f8f8f8', text='Padronizar condicao_i', bg='#1b87d2', font=("yu gothic ui bold", 11),
-                   cursor='hand2', activebackground='#1b87d2', command=CriaAreaImovel)
+                   cursor='hand2', activebackground='#1b87d2', command=padronizacao_condicao_i)
 Command5.place(x=420, y=210, width=195, height=50)
 
 # APP RECOMPOR
