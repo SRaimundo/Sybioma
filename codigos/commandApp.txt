@@ -9,3 +9,13 @@ CREATE TABLE "app" (gid serial,
 ALTER TABLE "app" ADD PRIMARY KEY (gid);
 SELECT AddGeometryColumn('','app','geom','0','GEOMETRY',2);
 COMMIT;
+
+CREATE INDEX app_geom
+  ON public.app
+  USING gist
+  (geom);
+
+COMMIT;
+
+CREATE INDEX app_cod_cidade ON app (cod_cidade);
+COMMIT;

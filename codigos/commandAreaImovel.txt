@@ -14,3 +14,16 @@ CREATE TABLE "area_imovel" (gid serial,
 ALTER TABLE "area_imovel" ADD PRIMARY KEY (gid);
 SELECT AddGeometryColumn('','area_imovel','geom','0','GEOMETRY',2);
 COMMIT;
+
+
+CREATE INDEX area_imovel_geom
+  ON public.area_imovel
+  USING gist
+  (geom);
+COMMIT;
+
+CREATE INDEX area_imovel_cod_cidade ON area_imovel (cod_cidade);
+COMMIT;
+
+CREATE INDEX area_imovel_condicao_i ON public.area_imovel (condicao_i);
+COMMIT;
