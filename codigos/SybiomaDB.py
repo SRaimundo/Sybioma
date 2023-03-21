@@ -1,4 +1,5 @@
 import psycopg2
+import psycopg2.extras
 import sys
 import os
 import csv
@@ -8,6 +9,8 @@ from tkinter import messagebox
 from shapely.geometry import MultiPolygon
 from shapely.geometry import Polygon
 from tkinter.ttk import Progressbar
+
+import time
 
 class SybiomaDB:
 
@@ -75,6 +78,9 @@ class SybiomaDB:
                 self._cursor.execute("prepare planoInsertApp as INSERT INTO APP(cod_cidade, idf, nom_tema, num_area, geom) VALUES ($1,$2,$3,$4,st_makevalid($5))")
                 self.criarPrepareApp = False
         
+        start = time.time()
+        start0 = time.time()  
+
         diretorio = filedialog.askdirectory()
         lista_dir_atual = os.listdir(diretorio)
         quantShapes = 0
@@ -115,9 +121,12 @@ class SybiomaDB:
         load_label.place(x=826, y=440)
         
         
-        
+        #print("Tempo de pre processamento: " + str( (time.time()-start) ))
+        start = time.time()  
+
         for shapes in lista_dir_atual:
             if f'APP.shp' in os.listdir(f'{diretorio}/{shapes}'):
+                start = time.time()  
                 table = gpd.read_file(f'{diretorio}/{shapes}/APP.shp' , encoding='utf-8',char_decode_errors='ignore')
                 table.geometry = [MultiPolygon([feature]) if isinstance(feature, Polygon) else feature for feature in table.geometry ]
                 quant = table.shape[0]
@@ -132,16 +141,33 @@ class SybiomaDB:
                         commandDelete = "DELETE FROM app WHERE cod_cidade={0};".format(cidade)
                         self._cursor.execute(commandDelete)
                         self._connection.commit()
-                
+                #print("Tempo de carregar cidade do arquivo e testar repetidas: " + str( (time.time()-start) ))
+                start = time.time()
+
                 # table = gpd.read_file(f'{diretorio}/{shapes}/APP.shp' , encoding='utf-8',char_decode_errors='ignore') #.to_wkb()
                 # table.geometry = [MultiPolygon([feature]) if isinstance(feature, Polygon) else feature for feature in table.geometry ]
+                listaDados = [  ]
+                
                 i = 0
                 while i<quant :
-                    self._cursor.execute("execute planoInsertApp (%s, %s, %s, %s,%s)",  (cidade, str(table.IDF[i]), str(table.NOM_TEMA[i]), table.NUM_AREA[i],str(table.geometry[i])))
+                    #self._cursor.execute("execute planoInsertApp (%s, %s, %s, %s,%s)",  (cidade, str(table.IDF[i]), str(table.NOM_TEMA[i]), table.NUM_AREA[i],str(table.geometry[i])))
+                    
+                    #print((cidade, str(table.IDF[i]), str(table.NOM_TEMA[i]), table.NUM_AREA[i],str(table.geometry[i])))
+                    listaDados.append(  (cidade, str(table.IDF[i]), str(table.NOM_TEMA[i]), table.NUM_AREA[i],str(table.geometry[i])) )
+                    #listaDados.append( (cidade, str(table.IDF[i]), str(table.NOM_TEMA[i]), table.NUM_AREA[i],str(table.geometry[i])) )
                     i+=1
-                    if i%200 ==0:
-                        self._connection.commit()
+                    #if i%1000 ==0:
+                    #    self._connection.commit()
                 self._connection.commit()
+                #print(listaDados)
+                psycopg2.extras.execute_batch(self._cursor,"execute planoInsertApp (%s, %s, %s, %s,%s)" , listaDados)
+
+                print("Tempo de carregar cidade no bd: " + str( (time.time()-start) ))
+                print("Numero de feicoes: " + str(quant))
+                print("Tempo por feicao: " + str( (time.time()-start)/quant ))
+
+                start = time.time()
+
                 progress["value"]+=1
                 quantCarregadas+=1
                 load_label["text"] = "{0}/{1} cidades carregadas".format(quantCarregadas,quantTotal)
@@ -149,6 +175,7 @@ class SybiomaDB:
         
         progress.destroy()
         load_label.destroy()
+        print("Tempo total: " + str( (time.time()-start0) ))
 
     
     def percorreShapesAreaImovel(self,root):
