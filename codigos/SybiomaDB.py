@@ -133,8 +133,8 @@ class SybiomaDB:
                         self._cursor.execute(commandDelete)
                         self._connection.commit()
                 
-                table = gpd.read_file(f'{diretorio}/{shapes}/APP.shp' , encoding='utf-8',char_decode_errors='ignore') #.to_wkb()
-                table.geometry = [MultiPolygon([feature]) if isinstance(feature, Polygon) else feature for feature in table.geometry ]
+                # table = gpd.read_file(f'{diretorio}/{shapes}/APP.shp' , encoding='utf-8',char_decode_errors='ignore') #.to_wkb()
+                # table.geometry = [MultiPolygon([feature]) if isinstance(feature, Polygon) else feature for feature in table.geometry ]
                 i = 0
                 while i<quant :
                     self._cursor.execute("execute planoInsertApp (%s, %s, %s, %s,%s)",  (cidade, str(table.IDF[i]), str(table.NOM_TEMA[i]), table.NUM_AREA[i],str(table.geometry[i])))
@@ -221,7 +221,7 @@ class SybiomaDB:
                             self._cursor.execute(commandDelete)
                             self._connection.commit()
                                                 
-                    table = gpd.read_file(f'{diretorio}/{shapes}/AREA_IMOVEL.shp' , encoding='utf-8',char_decode_errors='ignore') #.to_wkb()
+                    # table = gpd.read_file(f'{diretorio}/{shapes}/AREA_IMOVEL.shp' , encoding='utf-8',char_decode_errors='ignore') #.to_wkb()
                     table.geometry = [MultiPolygon([feature]) if isinstance(feature, Polygon) else feature for feature in table.geometry ]
                     i = 0
                     
@@ -275,12 +275,11 @@ class SybiomaDB:
         sqlDelete = "DROP TABLE IF EXISTS padronizacao_condicao_i;"
         self._cursor.execute(sqlDelete)
         self._connection.commit()
-        print(1)
+        
 
 
         sqlCreate = 'CREATE TABLE "padronizacao_condicao_i" ("idp" integer, "original" text,"nova" text); ALTER TABLE "padronizacao_condicao_i" ADD PRIMARY KEY (idp); '
         self._cursor.execute(sqlCreate)
-        print(2)
         self._connection.commit()
 
         with open(arquivo.name, 'r') as f:
@@ -290,7 +289,6 @@ class SybiomaDB:
                 self._cursor.execute("INSERT INTO padronizacao_condicao_i(idp,original,nova) VALUES (%s, %s, %s)", row)
         
         self._connection.commit()
-        print(3)
         
         sqlPadronizacao = "UPDATE area_imovel SET condicao_i = padr.nova from padronizacao_condicao_i as padr where condicao_i = padr.original"
         self._cursor.execute(sqlPadronizacao)

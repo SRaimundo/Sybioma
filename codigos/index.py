@@ -52,6 +52,17 @@ def connection():
         messagebox.showwarning('Error', 'Senha ou login invalidos')
         return
 
+def Reconnection():
+    NomeBanco = database_name.get()
+    conta = user_name.get()
+    senha = str(password_entry.get())
+    try:
+        banco.setConnection('localhost',NomeBanco,conta, senha)
+    except:
+        messagebox.showwarning('Error', 'Senha ou login invalidos')
+        return
+
+
 def CriaApp():
     try:
         show_frame(design_frame12)
@@ -60,6 +71,7 @@ def CriaApp():
         show_frame(CommandPage)
     except:
         messagebox.showwarning('Error', 'Erro ao criar Tabela App')
+        Reconnection()
         show_frame(CommandPage)
         return
 
@@ -71,6 +83,7 @@ def CriarAppRecompor():
         show_frame(CommandPage)
     except:
         messagebox.showwarning('Error', 'Erro ao criar Tabela App Recompor')
+        Reconnection()
         show_frame(CommandPage)
         return
 
@@ -82,6 +95,7 @@ def CriarImovApp():
         show_frame(CommandPage)
     except:
         messagebox.showwarning('Error', 'Erro ao criar Tabela Imovel App')
+        Reconnection()
         show_frame(CommandPage)
         return
 
@@ -93,6 +107,7 @@ def populaImovApp():
         show_frame(CommandPage)
     except:
         messagebox.showwarning('Error', 'Erro ao popular tabela Imovel App')
+        Reconnection()
         show_frame(CommandPage)
         return
 
@@ -105,6 +120,7 @@ def CriaAreaImovel():
         show_frame(CommandPage)
     except:
         messagebox.showwarning('Error', 'Erro ao criar Tabela Area Imovel')
+        Reconnection()
         show_frame(CommandPage)
         return
 
@@ -116,6 +132,7 @@ def InsereApp():
         show_frame(CommandPage)
     except:
         messagebox.showwarning('Error', 'Erro ao inserir dados na tabela App')
+        Reconnection()
         show_frame(CommandPage)
         return
 
@@ -127,6 +144,7 @@ def InsereAreaImovel():
         show_frame(CommandPage)
     except:
         messagebox.showwarning('Error', 'Erro ao inserir dados na tabela Area Imovel')
+        Reconnection()
         show_frame(CommandPage)
         return
 
@@ -137,6 +155,7 @@ def corrigirTextoApp():
         show_frame(CommandPage)
     except:
         messagebox.showwarning('Error', 'Erro ao corrigir formatacao da App')
+        Reconnection()
         show_frame(CommandPage)
         return
 
@@ -147,6 +166,7 @@ def corrigirTextoAppRecompor():
         show_frame(CommandPage)
     except:
         messagebox.showwarning('Error', 'Erro ao corrigir formatacao da App Recompor')
+        Reconnection()
         show_frame(CommandPage)
         return
 
@@ -157,6 +177,7 @@ def corrigirTextoAreaImovelCond():
         show_frame(CommandPage)
     except:
         messagebox.showwarning('Error', 'Erro ao corrigir formatacao da Condicao em Area Imovel')
+        Reconnection()
         show_frame(CommandPage)
         return
 
@@ -167,6 +188,7 @@ def corrigirTextoAreaImovelNom():
         show_frame(CommandPage)
     except:
         messagebox.showwarning('Error', 'Erro ao corrigir formatacao de Nom_Tema em Area Imovel')
+        Reconnection()
         show_frame(CommandPage)
         return
 
@@ -178,6 +200,7 @@ def criaGeoIndiceRecompor():
         show_frame(CommandPage)
     except:
         messagebox.showwarning('Error', 'Erro ao criar indice Geometrico em App Recompor')
+        Reconnection()
         show_frame(CommandPage)
         return
 
@@ -189,6 +212,7 @@ def criaGidIndiceRecompor():
         show_frame(CommandPage)
     except:
         messagebox.showwarning('Error', 'Erro ao criar indice do GID em App Recompor')
+        Reconnection()
         show_frame(CommandPage)
         return
 
@@ -200,6 +224,7 @@ def criaCodImovelIndiceRecompor():
         show_frame(CommandPage)
     except:
         messagebox.showwarning('Error', 'Erro ao criar indice do codigo imovel em App Recompor')
+        Reconnection()
         show_frame(CommandPage)
         return
 
@@ -211,6 +236,7 @@ def descompacta():
         show_frame(CommandPage)
     except:
         messagebox.showwarning('Error', 'Erro ao descompactar arquivos')
+        Reconnection()
         show_frame(CommandPage)
         return
 
@@ -222,6 +248,7 @@ def padronizacao_condicao_i():
         show_frame(CommandPage)
     except:
         messagebox.showwarning('Error', 'Erro ao padronizar condicao_i')
+        Reconnection()
         show_frame(CommandPage)
         return
 
