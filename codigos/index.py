@@ -127,8 +127,9 @@ def CriaAreaImovel():
 def InsereApp():
     try:
         show_frame(LoadingPage)
-        banco.percorreShapesApp(LoadingPage)
-        messagebox.showinfo(title='Concluido', message='Shapes inseridos na tabela App')
+        inseriu = banco.percorreShapesApp(LoadingPage)
+        if inseriu:
+            messagebox.showinfo(title='Concluido', message='Shapes inseridos na tabela App')
         show_frame(CommandPage)
     except:
         messagebox.showwarning('Error', 'Erro ao inserir dados na tabela App')
@@ -139,8 +140,9 @@ def InsereApp():
 def InsereAreaImovel():
     try:
         show_frame(LoadingPage)
-        banco.percorreShapesAreaImovel(LoadingPage)
-        messagebox.showinfo(title='Concluido', message='Shapes inseridos na tabela Area Imovel')
+        inseriu = banco.percorreShapesAreaImovel(LoadingPage)
+        if inseriu:
+            messagebox.showinfo(title='Concluido', message='Shapes inseridos na tabela Area Imovel')
         show_frame(CommandPage)
     except:
         messagebox.showwarning('Error', 'Erro ao inserir dados na tabela Area Imovel')
