@@ -82,6 +82,11 @@ class SybiomaDB:
         start0 = time.time()  
 
         diretorio = filedialog.askdirectory()
+
+        if len(diretorio) == 0: #usuario clicou em "cancelar"
+            progress.destroy()
+            return False
+
         lista_dir_atual = os.listdir(diretorio)
         quantShapes = 0
         repetidas = []
@@ -104,7 +109,7 @@ class SybiomaDB:
         
         if res == None:
             progress.destroy()
-            return
+            return False
 
 
         progress["maximum"] = quantShapes
@@ -176,6 +181,7 @@ class SybiomaDB:
         progress.destroy()
         load_label.destroy()
         print("Tempo total: " + str( (time.time()-start0) ))
+        return True
 
     
     def percorreShapesAreaImovel(self,root):
@@ -193,6 +199,11 @@ class SybiomaDB:
             self.criarPrepareAreaImovel = False
         
         diretorio = filedialog.askdirectory()
+
+        if len(diretorio) == 0: #usuario clicou em "cancelar"
+            progress.destroy()
+            return False
+
         lista_dir_atual = os.listdir(diretorio)
 
         quantShapes = 0
@@ -215,7 +226,7 @@ class SybiomaDB:
         
         if res == None:
             progress.destroy()
-            return
+            return False
 
 
         progress["maximum"] = quantShapes
@@ -265,6 +276,7 @@ class SybiomaDB:
         
         progress.destroy()
         load_label.destroy()
+        return True
     
     def corrigirTextoApp(self):
         self._cursor.execute("update app set nom_tema=lower(convert_from(convert(SUBSTRING(nom_tema,0,99)::bytea, 'UTF8', 'LATIN1'), 'UTF8'));Commit;")
