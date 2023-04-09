@@ -7,8 +7,8 @@ from SybiomaDB import *
 window = Tk()
 window.rowconfigure(0, weight=1)
 window.columnconfigure(0, weight=1)
-window.attributes('-zoomed', True) #Habilitar em caso de sistema linux
-# window.state('zoomed') #Desabilitar em caso de sistema linux
+# window.attributes('-zoomed', True) #Habilitar em caso de sistema linux
+window.state('zoomed') #Desabilitar em caso de sistema linux
 window.resizable(0, 0)
 window.title('Sybioma System')
 
