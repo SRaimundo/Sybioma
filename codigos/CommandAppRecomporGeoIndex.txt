@@ -1,5 +1,0 @@
-CREATE INDEX app_recompor_geom
-  ON public.app_recompor
-  USING gist
-  (geom);
-Commit;

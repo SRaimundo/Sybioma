@@ -1,6 +1,0 @@
-CREATE INDEX app_recompor_gid
-  ON public.app_recompor
-  USING btree
-    (gid ASC NULLS LAST);
-Commit;
-
