@@ -1,0 +1,2 @@
+select * into app_recompor from app where nom_tema like '%compor%';
+Commit;

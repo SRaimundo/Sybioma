@@ -1,0 +1,1 @@
+insert into imovel_app (select area_imovel.gid,app_recompor.gid from area_imovel, app_recompor where st_intersects(area_imovel.geom, app_recompor.geom))
