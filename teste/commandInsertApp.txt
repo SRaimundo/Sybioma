@@ -1,3 +1,0 @@
-INSERT INTO APP(cod_cidade, idf, nom_tema, num_area, geom)
-VALUES ({0},{1},{2},{3},{4});
-COMMIT;

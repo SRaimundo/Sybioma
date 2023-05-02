@@ -1,3 +1,0 @@
-INSERT INTO area_imovel(cod_cidade,cod_imovel, num_area, cod_estado, num_munici, num_modulo, tipo_imove, situacao, condicao_i, geom)
-VALUES ({0},{1},{2},{3},{4},{5},{6},{7},{8},{9});
-COMMIT;
